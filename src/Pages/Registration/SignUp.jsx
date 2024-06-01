@@ -1,8 +1,12 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
     return (
         <section className="bg-white dark:bg-gray-900">
+            <Helmet>
+                <title>FitFinesse | SignUp</title>
+            </Helmet>
             <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
                 <form className="w-full max-w-md">
                     <div className="flex justify-center mx-auto">

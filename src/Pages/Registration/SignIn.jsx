@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const SignIn = () => {
     const { googleLogin } = useAuth();
@@ -18,6 +19,9 @@ const SignIn = () => {
     }
     return (
         <div className="w-full max-w-sm p-6 m-auto mx-auto bg-black rounded-lg shadow-md dark:bg-gray-800">
+            <Helmet>
+                <title>FitFinesse | SignIn</title>
+            </Helmet>
             <div className="flex justify-center mx-auto">
                 <img className="w-auto h-7 sm:h-8" src="https://merakiui.com/images/logo.svg" alt="" />
             </div>
