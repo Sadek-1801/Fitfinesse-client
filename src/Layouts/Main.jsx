@@ -3,7 +3,7 @@ import Nav from "../Components/Nav";
 
 const Main = () => {
     return (
-        <div className="bg-black">
+        <div className="bg-black max-w-screen-2xl mx-auto">
             <Nav />
             <Outlet></Outlet>
         </div>

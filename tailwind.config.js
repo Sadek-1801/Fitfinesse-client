@@ -9,7 +9,11 @@ export default {
       'heading': ["Geologica", "sans-serif"],
       'body': ["Inter", "sans-serif"],
     },
-    extend: {},
+    extend: {
+      colors: {
+        'btn': '#E01717'
+      }
+    },
   },
   plugins: [],
 }
