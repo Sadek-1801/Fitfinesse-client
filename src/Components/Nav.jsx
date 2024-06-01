@@ -1,12 +1,24 @@
 
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import user from "/user.svg"
+import defaltPic from "/user.svg"
+import useAuth from '../Hooks/useAuth';
+import toast from 'react-hot-toast';
 
 
 const Nav = () => {
+    const { user, logOut } = useAuth();
 
     const [isOpen, setIsOpen] = useState(false);
+
+    const handleLogout = async() => {
+        try{
+            await logOut();
+            toast.success("You have successfully logged out")
+        }catch(err){
+            toast.error(err?.message)
+        }
+    }
 
     return (
         <header className="relative">
@@ -57,9 +69,25 @@ const Nav = () => {
                         <NavLink to={"/"} className="font-medium text-white lg:text-white lg:hover:text-gray-400 lg:mx-4 cursor-pointer">
                             Forums
                         </NavLink>
-                        <NavLink className="lg:mx-4 w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
-                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" className="object-cover w-full h-full" alt="avatar" />
-                        </NavLink>
+                        {/* To do: try to use headless dropdown menu here */}
+                        {
+                            user ?
+                                <>
+                                    <NavLink onClick={handleLogout} className="font-medium text-white lg:text-white lg:hover:text-gray-400 lg:mx-4 cursor-pointer">
+                                        Logout
+                                    </NavLink>
+                                    <NavLink className="lg:mx-4 w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
+                                        <img 
+                                        referrerPolicy='no-referrer'
+                                        src={user?.photoURL || defaltPic} className="object-cover w-full h-full" alt="avatar" />
+                                    </NavLink>
+
+                                </>
+                                :
+                                <NavLink to={"/login"} className="font-medium text-white lg:text-white lg:hover:text-gray-400 lg:mx-4 cursor-pointer">
+                                    Login
+                                </NavLink>
+                        }
                     </nav>
                 </div>
             </div>
