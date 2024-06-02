@@ -1,0 +1,75 @@
+[
+    {
+      "title": "Beginner Yoga",
+      "description": "A relaxing yoga session suitable for beginners. Improve flexibility and reduce stress.",
+      "numberOfBookings": 35,
+      "image": "https://i.ibb.co/0Z8JQbh/yoga.jpg"
+    },
+    {
+      "title": "Advanced Strength",
+      "description": "High-intensity strength training for advanced athletes. Focus on muscle building and endurance.",
+      "numberOfBookings": 20,
+      "image": "https://i.ibb.co/7nGM168/strength.jpg"
+    },
+    {
+      "title": "Cardio Blast",
+      "description": "A fast-paced cardio workout to get your heart pumping and burn calories.",
+      "numberOfBookings": 45,
+      "image": "https://i.ibb.co/gdRpPSs/cardio.jpg"
+    },
+    {
+      "title": "Core Pilates",
+      "description": "Pilates class focusing on core strength, balance, and flexibility.",
+      "numberOfBookings": 28,
+      "image": "https://i.ibb.co/cw0FwvB/core-pilates.jpg"
+    },
+    {
+      "title": "Spinning",
+      "description": "High-energy indoor cycling class to improve cardiovascular fitness.",
+      "numberOfBookings": 40,
+      "image": "https://i.ibb.co/yfFD4mM/spinning.jpg"
+    },
+    {
+      "title": "HIIT",
+      "description": "Short bursts of intense exercise followed by rest periods to boost metabolism.",
+      "numberOfBookings": 50,
+      "image": "https://i.ibb.co/LrLJYxD/HIIT.jpg"
+    },
+    {
+      "title": "Zumba",
+      "description": "Fun and energetic dance fitness class set to upbeat music.",
+      "numberOfBookings": 37,
+      "image": "https://i.ibb.co/dc3DsRS/zumba.jpg"
+    },
+    {
+      "title": "Fitness Boxing",
+      "description": "Boxing techniques combined with cardio exercises for a full-body workout.",
+      "numberOfBookings": 30,
+      "image": "https://i.ibb.co/Jq2FHP1/boxing.jpg"
+    },
+    {
+      "title": "CrossFit",
+      "description": "Intense strength and conditioning program to build power and endurance.",
+      "numberOfBookings": 22,
+      "image": "chttps://i.ibb.co/dkTqL33/cross-fit.jpg"
+    },
+    {
+      "title": "Swimming",
+      "description": "Learn to swim or improve your swimming technique with professional coaches.",
+      "numberOfBookings": 15,
+      "image": "https://i.ibb.co/Q6mqypP/swiming.jpg"
+    },
+    {
+      "title": "Meditation",
+      "description": "Guided meditation sessions to promote mental clarity and relaxation.",
+      "numberOfBookings": 25,
+      "image": "https://i.ibb.co/10s0SQF/meditation.jpg"
+    },
+    {
+      "title": "Kids Fitness",
+      "description": "Fun fitness activities designed specifically for children to keep them active.",
+      "numberOfBookings": 18,
+      "image": "https://i.ibb.co/LR1pSCK/kids-fitness.jpg"
+    }
+  ]
+  
