@@ -13,7 +13,7 @@ const Reviews = () => {
         }
     })
 
-    console.log(reviews);
+    // console.log(reviews);
     const settings = {
         infinite: true,
         slidesToShow: 3,

@@ -33,7 +33,7 @@ const ForumPost = () => {
                                         <div className="text-gray-400 text-sm">{post.name} - {post.date}</div>
                                     </div>
                                     <p className="flex-grow mb-4">{post.post.slice(0, 200)}...</p>
-                                    <button className="bg-btn opacity-90 text-white px-4 py-2 rounded-md self-start transition-transform transform hover:scale-105">Read More</button>
+                                    <button className="bg-btn contrast-50 hover:contrast-100 text-white px-4 py-2 rounded-md self-start transition-transform transform hover:scale-105">Read More</button>
                                 </div>
                             </div>
                         </div>

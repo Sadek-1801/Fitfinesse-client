@@ -5,6 +5,7 @@ import AboutSection from "./AboutSection";
 import FeaturedClasses from "./FeaturedClasses";
 import Reviews from "./Reviews";
 import ForumPost from "./ForumPost";
+import Newsletter from "./Newsletter";
 
 const Home = () => {
     return (
@@ -12,12 +13,13 @@ const Home = () => {
             <Helmet>
                 <title>FitFinesse | Home</title>
             </Helmet>
-            <Banner></Banner>
+            <Banner />
             <FeaturedSection />
             <AboutSection />
             <FeaturedClasses />
             <Reviews />
             <ForumPost />
+            <Newsletter />
         </div>
     );
 };
