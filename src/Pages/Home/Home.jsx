@@ -3,6 +3,8 @@ import Banner from "./Banner";
 import FeaturedSection from "./FeaturedSection";
 import AboutSection from "./AboutSection";
 import FeaturedClasses from "./FeaturedClasses";
+import Reviews from "./Reviews";
+import ForumPost from "./ForumPost";
 
 const Home = () => {
     return (
@@ -14,6 +16,8 @@ const Home = () => {
             <FeaturedSection />
             <AboutSection />
             <FeaturedClasses />
+            <Reviews />
+            <ForumPost />
         </div>
     );
 };
