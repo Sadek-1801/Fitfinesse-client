@@ -57,7 +57,7 @@ const Nav = () => {
                         <NavLink to={"/"} className="font-medium text-white lg:text-white lg:hover:text-gray-400 lg:mx-4 cursor-pointer">
                             Home
                         </NavLink>
-                        <NavLink to={"/"} className="font-medium text-white lg:text-white lg:hover:text-gray-400 lg:mx-4 cursor-pointer">
+                        <NavLink to={"/beATrainer"} className="font-medium text-white lg:text-white lg:hover:text-gray-400 lg:mx-4 cursor-pointer">
                             Trainers
                         </NavLink>
                         <NavLink to={"/"} className="font-medium text-white lg:text-white lg:hover:text-gray-400 lg:mx-4 cursor-pointer">

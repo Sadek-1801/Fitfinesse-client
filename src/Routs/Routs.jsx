@@ -6,6 +6,7 @@ import Main from "../Layouts/Main";
 import SignIn from "../Pages/Registration/SignIn";
 import SignUp from "../Pages/Registration/SignUp";
 import Home from "../Pages/Home/Home";
+import BeATrainer from "../Pages/BecomeATrainer/BeATrainer";
 
   export const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ import Home from "../Pages/Home/Home";
         {
           path: "/signup",
           element: <SignUp />
+        },
+        {
+          path: "/beATrainer",
+          element: <BeATrainer />
         }
       ]
     },

@@ -1,90 +1,98 @@
+import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 const SignUp = () => {
+    const imageURL = 'https://i.ibb.co/nCpbmF9/3d-gym-equipment.jpg'
+
+    const { createUser, signIn } = useAuth()
+    
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        photo: null,
+        password: ''
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        // setFormData({ ...formData, [name]: files ? files[0] : value });
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Handle form submission logic here
+        console.log(formData);
+
+    };
     return (
-        <section className="bg-white dark:bg-gray-900">
+        <section className="bg-black py-10 min-h-screen flex items-center justify-center">
             <Helmet>
                 <title>FitFinesse | SignUp</title>
             </Helmet>
-            <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
-                <form className="w-full max-w-md">
-                    <div className="flex justify-center mx-auto">
-                        <img className="w-auto h-7 sm:h-8" src="https://merakiui.com/images/logo.svg" alt="" />
-                    </div>
-
-                    <div className="flex items-center justify-center mt-6">
-                        <a href="#" className="w-1/3 pb-4 font-medium text-center text-gray-500 capitalize border-b dark:border-gray-400 dark:text-gray-300">
-                            sign in
-                        </a>
-
-                        <a href="#" className="w-1/3 pb-4 font-medium text-center text-gray-800 capitalize border-b-2 border-blue-500 dark:border-blue-400 dark:text-white">
-                            sign up
-                        </a>
-                    </div>
-
-                    <div className="relative flex items-center mt-8">
-                        <span className="absolute">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                            </svg>
-                        </span>
-
-                        <input type="text" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Username" />
-                    </div>
-
-                    <label htmlFor="dropzone-file" className="flex items-center px-3 py-3 mx-auto mt-6 text-center bg-white border-2 border-dashed rounded-lg cursor-pointer dark:border-gray-600 dark:bg-gray-900">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-                        </svg>
-
-                        <h2 className="mx-3 text-gray-400">Profile Photo</h2>
-
-                        <input id="dropzone-file" type="file" className="hidden" />
-                    </label>
-
-                    <div className="relative flex items-center mt-6">
-                        <span className="absolute">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
-                        </span>
-
-                        <input type="email" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address" />
-                    </div>
-
-                    <div className="relative flex items-center mt-4">
-                        <span className="absolute">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                            </svg>
-                        </span>
-
-                        <input type="password" className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password" />
-                    </div>
-
-                    <div className="relative flex items-center mt-4">
-                        <span className="absolute">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                            </svg>
-                        </span>
-
-                        <input type="password" className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Confirm Password" />
-                    </div>
-
-                    <div className="mt-6">
-                        <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
-                            Sign Up
-                        </button>
-
-                        <div className="mt-6 text-center ">
-                            <p className="text-sm text-blue-500 hover:underline dark:text-blue-400">
-                                Already have an account? <Link to={"/login"}>Sign In</Link>
-                            </p>
+            <div className="container mx-auto px-6">
+                <div className="flex md:items-stretch md:justify-between gap-6">
+                    <div
+                        className=" w-full md:w-1/2 lg:w-1/2 mb-6 md:mb-0 bg-cover bg-center rounded-lg shadow-lg"
+                        style={{ backgroundImage: `url(${imageURL})` }}
+                    ></div>
+                    <div className="w-full md:w-1/2 lg:w-1/2 flex items-center">
+                        <div className="bg-gray-900 p-8 rounded-lg shadow-lg w-full">
+                            <h2 className="text-white text-3xl font-bold mb-8 text-center">Sign Up</h2>
+                            <form onSubmit={handleSubmit} className="space-y-4">
+                                <div>
+                                    <label className="block text-white">Name</label>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        className="w-full p-2 bg-gray-800 text-white border border-[#E01717] rounded"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-white">Email</label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        className="w-full p-2 bg-gray-800 text-white border border-[#E01717] rounded"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-white">Photo</label>
+                                    <input
+                                        type="url"
+                                        name="photo"
+                                        onChange={handleChange}
+                                        className="w-full p-2 bg-gray-800 text-white border border-[#E01717] rounded"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-white">Password</label>
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        value={formData.password}
+                                        onChange={handleChange}
+                                        className="w-full p-2 bg-gray-800 text-white border border-[#E01717] rounded"
+                                    />
+                                </div>
+                                <div>
+                                    <button
+                                        type="submit"
+                                        className="w-full p-2 bg-[#E01717] text-white font-bold rounded hover:bg-red-600 transition-colors"
+                                    >
+                                        Sign Up
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </section>
     );
