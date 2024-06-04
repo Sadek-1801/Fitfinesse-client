@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useAxiosCommon from "../../Hooks/useAxiosCommon";
 import { useQuery } from "@tanstack/react-query";
 
@@ -82,9 +83,9 @@ const Trainers = () => {
                                     <img src="https://img.icons8.com/color/48/twitter--v1.png" alt="Twitter" className="w-6 h-6" />
                                 </a>
                             </div>
-                            <button className="bg-[#E01717] text-white py-2 px-4 rounded hover:bg-red-700 transition duration-300">
+                            <Link to={`/trainer/${trainer._id}`} className="bg-[#E01717] text-white py-2 px-4 rounded text-center hover:bg-red-700 transition duration-300">
                                 Know More
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 ))}

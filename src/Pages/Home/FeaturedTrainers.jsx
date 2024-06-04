@@ -10,7 +10,6 @@ const FeaturedTrainers = () => {
             return data
         }
     })
-    console.log(trainers);
     return (
         <section className="bg-black py-12">
             <div className="container mx-auto px-4">

@@ -8,6 +8,7 @@ import SignUp from "../Pages/Registration/SignUp";
 import Home from "../Pages/Home/Home";
 import BeATrainer from "../Pages/BecomeATrainer/BeATrainer";
 import Trainers from "../Pages/Trainers/Trainers";
+import TrainerDetails from "../Pages/TrainerDetails/TrainerDetails";
 
   export const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ import Trainers from "../Pages/Trainers/Trainers";
         {
           path: "/trainers", 
           element: <Trainers />
+        },
+        {
+          path: "/trainer/:id", 
+          element: <TrainerDetails />,
         },
         {
           path: "/beATrainer",
