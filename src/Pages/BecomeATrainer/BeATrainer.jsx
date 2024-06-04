@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {  useState } from "react";
 import useFetchClassess from "../../Hooks/useFetchClasses";
 import Select from 'react-select'
 import { uploadImage } from "../../Components/Utility/uploadImage";
@@ -8,13 +8,14 @@ import toast from "react-hot-toast";
 
 const BeATrainer = () => {
     // const [classes, setClasses] = useState([])
-    const { user } = useAuth()
+    const { user, setLoader } = useAuth()
     const [classes] = useFetchClassess() // isLoading
     const axiosSecure = useAxiosSecure()
-    
+
+
     const [formData, setFormData] = useState({
         name: '',
-        email: '',
+        email: "",
         age: '',
         profileImage: null,
         skills: [],
@@ -108,25 +109,30 @@ const BeATrainer = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
         const profileImageURL = await uploadImage(formData.profileImage)
-        const trainerData = {...formData, 
-            profileImage:profileImageURL,
+        const trainerData = {
+            ...formData,
+            profileImage: profileImageURL,
+            email: user?.email
         }
 
-        try{
-            const {data} = await axiosSecure.post("/beATrainer", trainerData)
-            if(data.insertedId){
-                const userInfo = {
-                    email: user?.email,
-                    status: "pending"
-                }
-                const { data } = await axiosSecure.put(`/user`, userInfo)
+        try {
+            const { data } = await axiosSecure.post("/beATrainer", trainerData)
+            if (data.insertedId) {
+                // const userInfo = {
+                //     email: user?.email,
+                //     status: "pending"
+                // }
+                // const { data } = await axiosSecure.put(`/user`, userInfo)
                 toast.success("You've succesfully Applied! Wait for admin confirmation");
                 console.log(data);
+                setLoader(false)
             }
 
-        }catch(err){
+        } catch (err) {
             console.log(err?.message);
+            setLoader(false)
         }
 
     };
@@ -140,8 +146,9 @@ const BeATrainer = () => {
                         <input
                             type="text"
                             name="name"
-                            readOnly
-                            defaultValue={user?.displayName}
+                            // readOnly
+                            // defaultValue={user?.displayName}
+                            value={formData.name}
                             onChange={handleChange}
                             className="w-full p-2 bg-gray-800 text-white border border-[#E01717] rounded"
                         />

@@ -1,0 +1,139 @@
+[
+    {
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "age": "26",
+      "profileImage": "https://i.ibb.co/tsdjHCL/avengers-4180477-1920.jpg",
+      "skills": ["Core Pilates", "Zumba", "Fitness Boxing", "CrossFit", "Swimming"],
+      "availableDays": [
+        {"value": "sun", "label": "Sunday"},
+        {"value": "mon", "label": "Monday"},
+        {"value": "wed", "label": "Wednesday"},
+        {"value": "thu", "label": "Thursday"}
+      ],
+      "availableTime": {"value": "eve-four", "label": "Morning: 4pm to 8pm"},
+      "socialLinks": "www.google.com",
+      "experience": 13,
+      "bio": "John Doe is a dedicated fitness professional with a passion for helping clients achieve their health and wellness goals. With a background in advanced strength training and a love for high-intensity interval training (HIIT), John creates personalized workout plans that are both challenging and rewarding. His commitment to fitness is evident in his energetic and motivating coaching style."
+    },
+    {
+      "name": "Jane Smith",
+      "email": "janesmith@example.com",
+      "age": "26",
+      "profileImage": "https://i.ibb.co/jrZ9TWs/fitness-1343888-1920.jpg",
+      "skills": ["Beginner Yoga", "Advanced Strength", "Cardio Blast", "Spinning", "HIIT"],
+      "availableDays": [
+        {"value": "sun", "label": "Sunday"},
+        {"value": "mon", "label": "Monday"},
+        {"value": "wed", "label": "Wednesday"},
+        {"value": "thu", "label": "Thursday"}
+      ],
+      "availableTime": {"value": "mor-six", "label": "Morning: 7am to 1pm"},
+      "socialLinks": "www.google.com",
+      "experience": 5,
+      "bio": "Jane Smith has over a decade of experience in the fitness industry. She specializes in spinning and Zumba, bringing a vibrant energy to every class she teaches. Jane believes in the power of group fitness to transform lives, and she works tirelessly to create a welcoming and inclusive environment for all her students. Her classes are known for being high-energy and fun."
+    },
+    {
+      "name": "Mike Johnson",
+      "email": "mikejohnson@example.com",
+      "age": "26",
+      "profileImage": "https://i.ibb.co/xsnkTJr/in-person-728226-1920.jpg",
+      "skills": ["Beginner Yoga", "Advanced Strength", "Spinning", "HIIT", "Zumba"],
+      "availableDays": [
+        {"value": "sun", "label": "Sunday"},
+        {"value": "mon", "label": "Monday"},
+        {"value": "wed", "label": "Wednesday"},
+        {"value": "thu", "label": "Thursday"}
+      ],
+      "availableTime": {"value": "mor-six", "label": "Morning: 7am to 1pm"},
+      "socialLinks": "www.google.com",
+      "experience": 7,
+      "bio": "Mike Johnson is an expert in strength training and HIIT. With a background in sports science, he brings a deep understanding of the human body and its capabilities to his training sessions. Mike's approach to fitness is rooted in science and tailored to each individual's needs. His motivational style helps clients push their limits and achieve their fitness goals."
+    },
+    {
+      "name": "Emily Davis",
+      "email": "emilydavis@example.com",
+      "age": "26",
+      "profileImage": "https://i.ibb.co/XZDwTYm/man-7847245-1920.jpg",
+      "skills": ["Advanced Strength", "HIIT", "Swimming", "Beginner Yoga", "Fitness Boxing"],
+      "availableDays": [
+        {"value": "sun", "label": "Sunday"},
+        {"value": "mon", "label": "Monday"},
+        {"value": "wed", "label": "Wednesday"},
+        {"value": "thu", "label": "Thursday"}
+      ],
+      "availableTime": {"value": "mor-four", "label": "Morning: 7am to 11am"},
+      "socialLinks": "www.google.com",
+      "experience": 6,
+      "bio": "Emily Davis is a certified yoga instructor with a passion for holistic health and wellness. She incorporates mindfulness and meditation into her fitness routines, helping clients achieve not only physical fitness but also mental clarity. Emily's classes are a blend of traditional yoga practices and modern fitness techniques, designed to rejuvenate and strengthen the body."
+    },
+    {
+      "name": "Chris Lee",
+      "email": "chrislee@example.com",
+      "age": "26",
+      "profileImage": "https://i.ibb.co/7tNsrQk/men-1203885-1920.jpg",
+      "skills": ["Cardio Blast", "Spinning", "CrossFit", "Kids Fitness", "Zumba"],
+      "availableDays": [
+        {"value": "sun", "label": "Sunday"},
+        {"value": "mon", "label": "Monday"},
+        {"value": "wed", "label": "Wednesday"},
+        {"value": "thu", "label": "Thursday"}
+      ],
+      "availableTime": {"value": "eve-four", "label": "Morning: 4pm to 8pm"},
+      "socialLinks": "www.google.com",
+      "experience": 12,
+      "bio": "Chris Lee is known for his high-intensity and engaging workout sessions. With a background in competitive sports, Chris brings a competitive edge to his training, motivating clients to reach their peak performance. His expertise in HIIT and advanced strength training ensures that every session is both challenging and rewarding."
+    },
+    {
+      "name": "Sara Williams",
+      "email": "sarawilliams@example.com",
+      "age": "26",
+      "profileImage": "https://i.ibb.co/C5XZPCz/workout-2928389-1920.jpg",
+      "skills": ["Beginner Yoga", "Core Pilates", "HIIT", "Fitness Boxing", "Meditation"],
+      "availableDays": [
+        {"value": "sun", "label": "Sunday"},
+        {"value": "mon", "label": "Monday"},
+        {"value": "wed", "label": "Wednesday"},
+        {"value": "thu", "label": "Thursday"}
+      ],
+      "availableTime": {"value": "eve-six", "label": "Morning: 4pm to 10pm"},
+      "socialLinks": "www.google.com",
+      "experience": 8,
+      "bio": "Sara Williams is a fitness enthusiast with a passion for spinning and Zumba. She believes that fitness should be enjoyable and accessible to everyone. Sara's classes are known for their high energy and fun atmosphere, making every workout feel like a dance party. Her positive attitude and motivational coaching style help clients stay committed to their fitness journey."
+    },
+    {
+      "name": "Tom Brown",
+      "email": "tombrown@example.com",
+      "age": "26",
+      "profileImage": "https://i.ibb.co/kBmx52y/in-person-728224-1920.jpg",
+      "skills": ["Advanced Strength", "Core Pilates", "Spinning", "Fitness Boxing", "CrossFit"],
+      "availableDays": [
+        {"value": "sun", "label": "Sunday"},
+        {"value": "mon", "label": "Monday"},
+        {"value": "wed", "label": "Wednesday"},
+        {"value": "thu", "label": "Thursday"}
+      ],
+      "availableTime": {"value": "mor-four", "label": "Morning: 7am to 11am"},
+      "socialLinks": "www.google.com",
+      "experience": 3,
+      "bio": "Tom Brown is a seasoned fitness coach with a focus on strength training and endurance. He has a background in athletics and uses his extensive knowledge to create effective training programs for his clients. Tom's dedication to fitness and his clients is evident in his detailed and structured approach to training, helping clients achieve their fitness goals efficiently."
+    },
+    {
+      "name": "Rachel Green",
+      "email": "rachelgreen@example.com",
+      "age": "26",
+      "profileImage": "https://i.ibb.co/b7b2rvv/successful-sporty-male-shows-his-big-finger-up.jpg",
+      "skills": ["Meditation", "Kids Fitness", "HIIT", "Cardio Blast", "Beginner Yoga"],
+      "availableDays": [
+        {"value": "sun", "label": "Sunday"},
+        {"value": "mon", "label": "Monday"},
+        {"value": "wed", "label": "Wednesday"},
+        {"value": "thu", "label": "Thursday"}
+      ],
+      "availableTime": {"value": "eve-six", "label": "Morning: 4pm to 10pm"},
+      "socialLinks": "www.google.com",
+      "experience": 5,
+      "bio": "Rachel Green is a dynamic and energetic fitness instructor with a passion for dance fitness. She combines her love for dance with her expertise in fitness to create classes that are both fun and effective. Rachel's approach to fitness is all about having a good time while getting fit, and her infectious energy keeps clients coming back for more."
+    }
+  ]
+  
