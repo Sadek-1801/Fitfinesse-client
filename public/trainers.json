@@ -11,7 +11,32 @@
         {"value": "wed", "label": "Wednesday"},
         {"value": "thu", "label": "Thursday"}
       ],
-      "availableTime": {"value": "eve-four", "label": "Morning: 4pm to 8pm"},
+      "availableTime":  {
+        "value": "eve-four",
+        "label": "Evening: 4pm to 8pm",
+        "slots": [
+          {
+            "slotName": "Slot 16-17",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 17-18",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 18-19",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 19-20",
+            "duration": "1 hour",
+            "status": "available"
+          }
+        ]
+      },
       "socialLinks": "www.google.com",
       "experience": 13,
       "bio": "John Doe is a dedicated fitness professional with a passion for helping clients achieve their health and wellness goals. With a background in advanced strength training and a love for high-intensity interval training (HIIT), John creates personalized workout plans that are both challenging and rewarding. His commitment to fitness is evident in his energetic and motivating coaching style."
@@ -28,7 +53,42 @@
         {"value": "wed", "label": "Wednesday"},
         {"value": "thu", "label": "Thursday"}
       ],
-      "availableTime": {"value": "mor-six", "label": "Morning: 7am to 1pm"},
+      "availableTime": {
+        "value": "mor-six",
+        "label": "Morning: 7am to 1pm",
+        "slots": [
+          {
+            "slotName": "Slot 7-8",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 8-9",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 9-10",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 10-11",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 11-12",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 12-13",
+            "duration": "1 hour",
+            "status": "available"
+          }
+        ]
+      },
       "socialLinks": "www.google.com",
       "experience": 5,
       "bio": "Jane Smith has over a decade of experience in the fitness industry. She specializes in spinning and Zumba, bringing a vibrant energy to every class she teaches. Jane believes in the power of group fitness to transform lives, and she works tirelessly to create a welcoming and inclusive environment for all her students. Her classes are known for being high-energy and fun."
@@ -45,7 +105,42 @@
         {"value": "wed", "label": "Wednesday"},
         {"value": "thu", "label": "Thursday"}
       ],
-      "availableTime": {"value": "mor-six", "label": "Morning: 7am to 1pm"},
+      "availableTime": {
+        "value": "mor-six",
+        "label": "Morning: 7am to 1pm",
+        "slots": [
+          {
+            "slotName": "Slot 7-8",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 8-9",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 9-10",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 10-11",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 11-12",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 12-13",
+            "duration": "1 hour",
+            "status": "available"
+          }
+        ]
+      },
       "socialLinks": "www.google.com",
       "experience": 7,
       "bio": "Mike Johnson is an expert in strength training and HIIT. With a background in sports science, he brings a deep understanding of the human body and its capabilities to his training sessions. Mike's approach to fitness is rooted in science and tailored to each individual's needs. His motivational style helps clients push their limits and achieve their fitness goals."
@@ -62,7 +157,32 @@
         {"value": "wed", "label": "Wednesday"},
         {"value": "thu", "label": "Thursday"}
       ],
-      "availableTime": {"value": "mor-four", "label": "Morning: 7am to 11am"},
+      "availableTime":  {
+        "value": "mor-four",
+        "label": "Morning: 7am to 11am",
+        "slots": [
+          {
+            "slotName": "Slot 7-8",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 8-9",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 9-10",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 10-11",
+            "duration": "1 hour",
+            "status": "available"
+          }
+        ]
+      },
       "socialLinks": "www.google.com",
       "experience": 6,
       "bio": "Emily Davis is a certified yoga instructor with a passion for holistic health and wellness. She incorporates mindfulness and meditation into her fitness routines, helping clients achieve not only physical fitness but also mental clarity. Emily's classes are a blend of traditional yoga practices and modern fitness techniques, designed to rejuvenate and strengthen the body."
@@ -79,7 +199,32 @@
         {"value": "wed", "label": "Wednesday"},
         {"value": "thu", "label": "Thursday"}
       ],
-      "availableTime": {"value": "eve-four", "label": "Morning: 4pm to 8pm"},
+      "availableTime":  {
+        "value": "eve-four",
+        "label": "Evening: 4pm to 8pm",
+        "slots": [
+          {
+            "slotName": "Slot 16-17",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 17-18",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 18-19",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 19-20",
+            "duration": "1 hour",
+            "status": "available"
+          }
+        ]
+      },
       "socialLinks": "www.google.com",
       "experience": 12,
       "bio": "Chris Lee is known for his high-intensity and engaging workout sessions. With a background in competitive sports, Chris brings a competitive edge to his training, motivating clients to reach their peak performance. His expertise in HIIT and advanced strength training ensures that every session is both challenging and rewarding."
@@ -96,7 +241,42 @@
         {"value": "wed", "label": "Wednesday"},
         {"value": "thu", "label": "Thursday"}
       ],
-      "availableTime": {"value": "eve-six", "label": "Morning: 4pm to 10pm"},
+      "availableTime": {
+        "value": "eve-six",
+        "label": "Evening: 4pm to 10pm",
+        "slots": [
+          {
+            "slotName": "Slot 16-17",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 17-18",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 18-19",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 19-20",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 20-21",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 21-22",
+            "duration": "1 hour",
+            "status": "available"
+          }
+        ]
+      },
       "socialLinks": "www.google.com",
       "experience": 8,
       "bio": "Sara Williams is a fitness enthusiast with a passion for spinning and Zumba. She believes that fitness should be enjoyable and accessible to everyone. Sara's classes are known for their high energy and fun atmosphere, making every workout feel like a dance party. Her positive attitude and motivational coaching style help clients stay committed to their fitness journey."
@@ -113,7 +293,32 @@
         {"value": "wed", "label": "Wednesday"},
         {"value": "thu", "label": "Thursday"}
       ],
-      "availableTime": {"value": "mor-four", "label": "Morning: 7am to 11am"},
+      "availableTime":  {
+        "value": "mor-four",
+        "label": "Morning: 7am to 11am",
+        "slots": [
+          {
+            "slotName": "Slot 7-8",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 8-9",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 9-10",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 10-11",
+            "duration": "1 hour",
+            "status": "available"
+          }
+        ]
+      },
       "socialLinks": "www.google.com",
       "experience": 3,
       "bio": "Tom Brown is a seasoned fitness coach with a focus on strength training and endurance. He has a background in athletics and uses his extensive knowledge to create effective training programs for his clients. Tom's dedication to fitness and his clients is evident in his detailed and structured approach to training, helping clients achieve their fitness goals efficiently."
@@ -130,7 +335,42 @@
         {"value": "wed", "label": "Wednesday"},
         {"value": "thu", "label": "Thursday"}
       ],
-      "availableTime": {"value": "eve-six", "label": "Morning: 4pm to 10pm"},
+      "availableTime": {
+        "value": "eve-six",
+        "label": "Evening: 4pm to 10pm",
+        "slots": [
+          {
+            "slotName": "Slot 16-17",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 17-18",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 18-19",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 19-20",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 20-21",
+            "duration": "1 hour",
+            "status": "available"
+          },
+          {
+            "slotName": "Slot 21-22",
+            "duration": "1 hour",
+            "status": "available"
+          }
+        ]
+      },
       "socialLinks": "www.google.com",
       "experience": 5,
       "bio": "Rachel Green is a dynamic and energetic fitness instructor with a passion for dance fitness. She combines her love for dance with her expertise in fitness to create classes that are both fun and effective. Rachel's approach to fitness is all about having a good time while getting fit, and her infectious energy keeps clients coming back for more."

@@ -36,10 +36,130 @@ const BeATrainer = () => {
         { value: 'thu', label: 'Thirsday' }
     ]
     const timeOptions = [
-        { value: 'mor-four', label: 'Morning: 7am to 11am' },
-        { value: 'mor-six', label: 'Morning: 7am to 1pm' },
-        { value: 'eve-four', label: 'Evening: 4pm to 8pm' },
-        { value: 'eve-six', label: 'Evening: 4pm to 10pm' }
+        {
+            "value": "mor-four",
+            "label": "Morning: 7am to 11am",
+            "slots": [
+              {
+                "slotName": "Slot 7-8",
+                "duration": "1 hour",
+                "status": "available"
+              },
+              {
+                "slotName": "Slot 8-9",
+                "duration": "1 hour",
+                "status": "available"
+              },
+              {
+                "slotName": "Slot 9-10",
+                "duration": "1 hour",
+                "status": "available"
+              },
+              {
+                "slotName": "Slot 10-11",
+                "duration": "1 hour",
+                "status": "available"
+              }
+            ]
+          },
+          {
+            "value": "mor-six",
+            "label": "Morning: 7am to 1pm",
+            "slots": [
+              {
+                "slotName": "Slot 7-8",
+                "duration": "1 hour",
+                "status": "available"
+              },
+              {
+                "slotName": "Slot 8-9",
+                "duration": "1 hour",
+                "status": "available"
+              },
+              {
+                "slotName": "Slot 9-10",
+                "duration": "1 hour",
+                "status": "available"
+              },
+              {
+                "slotName": "Slot 10-11",
+                "duration": "1 hour",
+                "status": "available"
+              },
+              {
+                "slotName": "Slot 11-12",
+                "duration": "1 hour",
+                "status": "available"
+              },
+              {
+                "slotName": "Slot 12-13",
+                "duration": "1 hour",
+                "status": "available"
+              }
+            ]
+          },
+          {
+            "value": "eve-four",
+            "label": "Evening: 4pm to 8pm",
+            "slots": [
+              {
+                "slotName": "Slot 16-17",
+                "duration": "1 hour",
+                "status": "available"
+              },
+              {
+                "slotName": "Slot 17-18",
+                "duration": "1 hour",
+                "status": "available"
+              },
+              {
+                "slotName": "Slot 18-19",
+                "duration": "1 hour",
+                "status": "available"
+              },
+              {
+                "slotName": "Slot 19-20",
+                "duration": "1 hour",
+                "status": "available"
+              }
+            ]
+          },
+          {
+            "value": "eve-six",
+            "label": "Evening: 4pm to 10pm",
+            "slots": [
+              {
+                "slotName": "Slot 16-17",
+                "duration": "1 hour",
+                "status": "available"
+              },
+              {
+                "slotName": "Slot 17-18",
+                "duration": "1 hour",
+                "status": "available"
+              },
+              {
+                "slotName": "Slot 18-19",
+                "duration": "1 hour",
+                "status": "available"
+              },
+              {
+                "slotName": "Slot 19-20",
+                "duration": "1 hour",
+                "status": "available"
+              },
+              {
+                "slotName": "Slot 20-21",
+                "duration": "1 hour",
+                "status": "available"
+              },
+              {
+                "slotName": "Slot 21-22",
+                "duration": "1 hour",
+                "status": "available"
+              }
+            ]
+          }
     ]
 
     const handleChange = (e) => {
@@ -109,7 +229,6 @@ const BeATrainer = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
         const profileImageURL = await uploadImage(formData.profileImage)
         const trainerData = {
             ...formData,

@@ -6,6 +6,7 @@ import FeaturedClasses from "./FeaturedClasses";
 import Reviews from "./Reviews";
 import ForumPost from "./ForumPost";
 import Newsletter from "./Newsletter";
+import FeaturedTrainers from "./FeaturedTrainers";
 
 const Home = () => {
     return (
@@ -20,6 +21,7 @@ const Home = () => {
             <Reviews />
             <ForumPost />
             <Newsletter />
+            <FeaturedTrainers />
         </div>
     );
 };
