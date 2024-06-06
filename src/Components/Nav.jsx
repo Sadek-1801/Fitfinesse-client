@@ -63,7 +63,7 @@ const Nav = () => {
                         <NavLink to={"/"} className="font-medium text-white lg:text-white lg:hover:text-gray-400 lg:mx-4 cursor-pointer">
                             Classes
                         </NavLink>
-                        <NavLink to={"/"} className="font-medium text-white lg:text-white lg:hover:text-gray-400 lg:mx-4 cursor-pointer">
+                        <NavLink to={"/dashboard"} className="font-medium text-white lg:text-white lg:hover:text-gray-400 lg:mx-4 cursor-pointer">
                             Dashboard
                         </NavLink>
                         <NavLink to={"/"} className="font-medium text-white lg:text-white lg:hover:text-gray-400 lg:mx-4 cursor-pointer">
