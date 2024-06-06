@@ -1,9 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useAxiosCommon from "../../Hooks/useAxiosCommon";
+import { useContext } from "react";
+import { TrainerBookingContext } from "../../Providers/TrainerBookingProvider";
 
 const TrainerDetails = () => {
     const { id } = useParams()
+    const { setTrainer} = useContext(TrainerBookingContext)
+    const navigate = useNavigate()
     const axiosCommon = useAxiosCommon()
     const { data: trainer, isLoading } = useQuery({
         queryKey: ["trainerDetails"],
@@ -12,10 +16,25 @@ const TrainerDetails = () => {
             return data
         }
     })
-    console.log(id, trainer);
+    const handleBooking = (slot, trainer) => {
+        const trainerInfo = {
+            trainerId: trainer._id,
+            trainerName: trainer.name,
+            classes: trainer.skills,
+            selectedSlot: slot,
+            session: trainer.availableTime.label
+        }
+        setTrainer(trainerInfo)
+        navigate("/trainerBooking")
+    }
+
+    
     if (isLoading) return <p>Loading..........</p>
     return (
         <div className="container mx-auto p-6 bg-gray-900 text-white">
+            <div className="text-center">
+            <h2 className="text-4xl font-bold mb-8">All You Need To Know About Mr: {trainer.name}</h2>
+            </div>
             <div className="lg:flex lg:space-x-8">
                 {/* Trainer Info Section */}
                 <div className="lg:w-1/2">
@@ -27,11 +46,11 @@ const TrainerDetails = () => {
                                         `url(${trainer.profileImage})`
                                 }}></div>
 
-                            {/* to do: why image does not show in the small screen */}
+                            {/* todo: why image does not show in the small screen */}
                             <div className="w-full lg:w-1/2 ">
                                 <h1 className="text-3xl font-bold mb-2">{trainer.name}</h1>
                                 <p className="text-lg font-bold mb-4">Experience: <span className="text-btn">{trainer.experience}</span> years</p>
-                                <h3 className="font-semibold text-lg mb-2">Skills:</h3>
+                                <h3 className="font-semibold text-lg mb-2">Classes:</h3>
                                 <ul className="list-disc list-inside">
                                     {trainer.skills.map((skill, index) => (
                                         <li key={index}>{skill}</li>
@@ -68,10 +87,11 @@ const TrainerDetails = () => {
                         </ul>
                     </div>
                     <div className="mb-6">
-                        <h3 className="font-semibold text-lg mb-2">Available Slots:</h3>
-                        <div className="flex flex-wrap gap-2">
+                        <div className="mb-6 text-center text-red-400 text-2xl font-medium"><p>Available Time - <span>{trainer.availableTime.label}</span></p></div>
+                        <h3 className="font-semibold text-lg mb-2 text-center ">Available Slots:</h3>
+                        <div className="grid grid-cols-2 gap-2">
                             {trainer.availableTime.slots.map((slot, index) => (
-                                <button key={index} className="bg-gray-800 text-white py-1 px-2 rounded hover:bg-gray-700 transition">
+                                <button onClick={() => handleBooking(slot, trainer)} key={index} className="bg-gray-800 text-white py-1 px-2 rounded hover:bg-red-400 transition text-lg">
                                     {slot.slotName} : ({slot.duration})
                                 </button>
                             ))}

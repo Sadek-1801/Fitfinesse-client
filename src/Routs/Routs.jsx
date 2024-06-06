@@ -9,6 +9,8 @@ import Home from "../Pages/Home/Home";
 import BeATrainer from "../Pages/BecomeATrainer/BeATrainer";
 import Trainers from "../Pages/Trainers/Trainers";
 import TrainerDetails from "../Pages/TrainerDetails/TrainerDetails";
+import TrainerBooking from "../Pages/TrainerBooking/TrainerBooking";
+import Payment from "../Pages/Payment/Payment";
 
   export const router = createBrowserRouter([
     {
@@ -34,6 +36,14 @@ import TrainerDetails from "../Pages/TrainerDetails/TrainerDetails";
         {
           path: "/trainer/:id", 
           element: <TrainerDetails />,
+        },
+        {
+          path: "/trainerBooking", 
+          element: <TrainerBooking />,
+        },
+        {
+          path: "/payment", 
+          element: <Payment />,
         },
         {
           path: "/beATrainer",
