@@ -14,6 +14,7 @@ import Payment from "../Pages/Payment/Payment";
 import Dashboard from "../Layouts/Dashboard";
 import AllSubscriber from "../Pages/Dashboard/Admin/AllSubscriber/AllSubscriber";
 import AllTrainers from "../Pages/Dashboard/Admin/AllTrainers/AllTrainers";
+import Balance from "../Pages/Dashboard/Admin/Balance/Balance";
 
 export const router = createBrowserRouter([
   {
@@ -65,7 +66,11 @@ export const router = createBrowserRouter([
       {
         path: "allTrainers",
         element: <AllTrainers />
-      }
+      },
+      {
+        path: "balance",
+        element: <Balance />
+      },
     ]
   }
 ]);
