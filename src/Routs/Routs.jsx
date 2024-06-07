@@ -13,6 +13,7 @@ import TrainerBooking from "../Pages/TrainerBooking/TrainerBooking";
 import Payment from "../Pages/Payment/Payment";
 import Dashboard from "../Layouts/Dashboard";
 import AllSubscriber from "../Pages/Dashboard/Admin/AllSubscriber/AllSubscriber";
+import AllTrainers from "../Pages/Dashboard/Admin/AllTrainers/AllTrainers";
 
 export const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <AllSubscriber />
+      },
+      {
+        path: "allTrainers",
+        element: <AllTrainers />
       }
     ]
   }
