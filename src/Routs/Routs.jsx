@@ -15,6 +15,7 @@ import Dashboard from "../Layouts/Dashboard";
 import AllSubscriber from "../Pages/Dashboard/Admin/AllSubscriber/AllSubscriber";
 import AllTrainers from "../Pages/Dashboard/Admin/AllTrainers/AllTrainers";
 import Balance from "../Pages/Dashboard/Admin/Balance/Balance";
+import AddClass from "../Pages/Dashboard/Admin/AddClass/AddClass";
 
 export const router = createBrowserRouter([
   {
@@ -64,12 +65,20 @@ export const router = createBrowserRouter([
         element: <AllSubscriber />
       },
       {
+        path: "allSubscriber",
+        element: <AllSubscriber />
+      },
+      {
         path: "allTrainers",
         element: <AllTrainers />
       },
       {
         path: "balance",
         element: <Balance />
+      },
+      {
+        path: "addClass",
+        element: <AddClass />
       },
     ]
   }

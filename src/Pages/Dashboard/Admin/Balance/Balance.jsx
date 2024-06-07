@@ -9,9 +9,9 @@ const Balance = () => {
     // Colors for the pie chart
     const COLORS = ['#8884d8', '#82ca9d'];
     return (
-        <div className="bg-gray-900 text-white min-h-screen p-8">
+        <div className="text-white  p-8">
             <div className="container mx-auto">
-                <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
+                <h1 className="text-3xl text-white font-bold text-center mb-4">Admin Panel: Balance & Transaction History</h1>
 
                 {/* Balance Section */}
                 <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-8">
@@ -67,7 +67,6 @@ const Balance = () => {
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     );
