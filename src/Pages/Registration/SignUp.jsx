@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
     const imageURL = 'https://i.ibb.co/nCpbmF9/3d-gym-equipment.jpg'
-
-    const { createUser, signIn } = useAuth()
+    const navigate = useNavigate()
+    const { createUser, updateUserProfile } = useAuth()
     
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        photo: null,
+        photo: '',
         password: ''
     });
 
@@ -21,10 +22,17 @@ const SignUp = () => {
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         // Handle form submission logic here
-        console.log(formData);
+        try{
+            await createUser(formData.email, formData.password)
+            await updateUserProfile(formData.name, formData.photo)
+            navigate("/")
+            toast.success("You've Succefully Logged In")
+        }catch(err) {
+            toast.error(err?.message)
+        }
 
     };
     return (
