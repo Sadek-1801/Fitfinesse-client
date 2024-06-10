@@ -16,11 +16,15 @@ import AllSubscriber from "../Pages/Dashboard/Admin/AllSubscriber/AllSubscriber"
 import AllTrainers from "../Pages/Dashboard/Admin/AllTrainers/AllTrainers";
 import Balance from "../Pages/Dashboard/Admin/Balance/Balance";
 import AddClass from "../Pages/Dashboard/Admin/AddClass/AddClass";
-
+import ManageSlots from "../Pages/Dashboard/Trainer/ManageSlots/ManageSlots";
+import AddForum from "../Pages/Dashboard/Shared/AddForum";
+import AddNewSlot from "../Pages/Dashboard/Trainer/AddNewSlot/AddNewSlot";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -59,6 +63,7 @@ export const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard></Dashboard>,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -79,6 +84,18 @@ export const router = createBrowserRouter([
       {
         path: "addClass",
         element: <AddClass />
+      },
+      {
+        path: "manageSlots",
+        element: <ManageSlots />
+      },
+      {
+        path: "addForum",
+        element: <AddForum />
+      },
+      {
+        path: "addNewSlot",
+        element: <AddNewSlot/>
       },
     ]
   }
