@@ -6,8 +6,8 @@ const FeaturedClasses = () => {
     // const [featured, setFeatured] =useState('dsc')
 
     const axiosCommon = useAxiosCommon()
-    const { data: classes = [], isLoading } = useQuery({
-        queryKey: ['classes'],
+    const { data: featuredClasses = [], isLoading } = useQuery({
+        queryKey: ['featuredClasses'],
         queryFn: async () => {
             const { data } = await axiosCommon(`/featured-classes`)
             return data
@@ -24,7 +24,7 @@ const FeaturedClasses = () => {
             </p>
             </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {classes.map(item => (
+                    {featuredClasses.map(item => (
                         <div key={item._id} className="bg-gray-800 rounded-lg shadow-lg p-6 text-center transition-transform transform hover:scale-105">
                             <img src={item.image} alt={item.title} className="w-full h-48 object-cover rounded-t-lg mb-4" />
                             <h3 className="text-2xl uppercase font-semibold text-white mb-2">{item.title}</h3>

@@ -239,11 +239,11 @@ const BeATrainer = () => {
         try {
             const { data } = await axiosSecure.post("/beATrainer", trainerData)
             if (data.insertedId) {
-                // const userInfo = {
-                //     email: user?.email,
-                //     status: "pending"
-                // }
-                // const { data } = await axiosSecure.put(`/user`, userInfo)
+                const userInfo = {
+                    email: user?.email,
+                    status: "pending"
+                }
+                const { data } = await axiosSecure.put(`/user`, userInfo)
                 toast.success("You've succesfully Applied! Wait for admin confirmation");
                 console.log(data);
                 setLoader(false)

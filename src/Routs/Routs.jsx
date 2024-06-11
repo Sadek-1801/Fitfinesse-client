@@ -20,6 +20,7 @@ import ManageSlots from "../Pages/Dashboard/Trainer/ManageSlots/ManageSlots";
 import AddForum from "../Pages/Dashboard/Shared/AddForum";
 import AddNewSlot from "../Pages/Dashboard/Trainer/AddNewSlot/AddNewSlot";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import Classes from "../Pages/Classes/Classes";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home />
+      },
+      {
+        path: "/classes",
+        element: <Classes />
       },
       {
         path: "/login",
