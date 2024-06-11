@@ -24,7 +24,7 @@ const Reviews = () => {
     };
     if (isLoading) return <div>Loading......</div>
     return (
-        <section className="my-8 bg-black">
+        <section className="my-8 bg-black w-full overflow-hidden">
             <div className="container flex flex-col items-center mx-auto mb-12 md:p-10 md:px-12">
                 <h1 className="p-4 text-white text-4xl font-semibold leading-none text-center">What our customers are saying about us</h1>
             </div>
