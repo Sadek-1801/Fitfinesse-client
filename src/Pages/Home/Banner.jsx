@@ -37,16 +37,16 @@ const Banner = () => {
 
     return (
         <div className="relative w-full overflow-hidden">
-            <Slider {...settings}>
-                {slides.map((slide, index) => (
-                    <div key={index}>
-                        <div 
-                            className="min-h-screen flex items-center justify-center bg-cover bg-center"
-                            style={{ backgroundImage: `url(${slide.imageUrl})` }}
-                        >
-                            <div className="bg-black bg-opacity-50 p-10 rounded-lg text-center">
-                                <h2 className="text-4xl md:text-6xl text-white font-bold mb-4">{slide.header}</h2>
-                                <p className="text-xl md:text-2xl text-gray-300 mb-6">{slide.subheader}</p>
+        <Slider {...settings}>
+            {slides.map((slide, index) => (
+                <div key={index} className="w-full">
+                    <div 
+                        className="min-h-screen flex items-center justify-center bg-cover bg-center"
+                        style={{ backgroundImage: `url(${slide.imageUrl})` }}
+                    >
+                        <div className="bg-black bg-opacity-50 p-10 rounded-lg text-center max-w-3xl mx-auto">
+                            <h2 className="text-4xl md:text-6xl text-white font-bold mb-4">{slide.header}</h2>
+                            <p className="text-xl md:text-2xl text-gray-300 mb-6">{slide.subheader}</p>
                                 <Link className="px-6 py-2 bg-[#E01717] text-white font-bold rounded hover:bg-red-600 transition-colors">
                                     {slide.buttonText}
                                 </Link>
