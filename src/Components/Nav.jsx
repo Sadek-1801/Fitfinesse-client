@@ -66,7 +66,7 @@ const Nav = () => {
                         <NavLink to={"/dashboard"} className="font-medium text-white lg:text-white lg:hover:text-gray-400 lg:mx-4 cursor-pointer">
                             Dashboard
                         </NavLink>
-                        <NavLink to={"/"} className="font-medium text-white lg:text-white lg:hover:text-gray-400 lg:mx-4 cursor-pointer">
+                        <NavLink to={"/forum"} className="font-medium text-white lg:text-white lg:hover:text-gray-400 lg:mx-4 cursor-pointer">
                             Forums
                         </NavLink>
                         {/* To do: try to use headless dropdown menu here */}

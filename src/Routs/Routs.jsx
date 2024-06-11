@@ -21,6 +21,7 @@ import AddForum from "../Pages/Dashboard/Shared/AddForum";
 import AddNewSlot from "../Pages/Dashboard/Trainer/AddNewSlot/AddNewSlot";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Classes from "../Pages/Classes/Classes";
+import Forum from "../Pages/Forum/Forum";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
       {
         path: "/classes",
         element: <Classes />
+      },
+      {
+        path: "/forum",
+        element: <Forum />
       },
       {
         path: "/login",
