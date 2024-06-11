@@ -63,9 +63,9 @@ const Nav = () => {
                         <NavLink to={"/classes"} className="font-medium text-white lg:text-white lg:hover:text-gray-400 lg:mx-4 cursor-pointer">
                             Classes
                         </NavLink>
-                        <NavLink to={"/dashboard"} className="font-medium text-white lg:text-white lg:hover:text-gray-400 lg:mx-4 cursor-pointer">
+                        {user && <NavLink to={"/dashboard"} className="font-medium text-white lg:text-white lg:hover:text-gray-400 lg:mx-4 cursor-pointer">
                             Dashboard
-                        </NavLink>
+                        </NavLink>}
                         <NavLink to={"/forum"} className="font-medium text-white lg:text-white lg:hover:text-gray-400 lg:mx-4 cursor-pointer">
                             Forums
                         </NavLink>

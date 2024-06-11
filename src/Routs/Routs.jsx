@@ -22,6 +22,9 @@ import AddNewSlot from "../Pages/Dashboard/Trainer/AddNewSlot/AddNewSlot";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Classes from "../Pages/Classes/Classes";
 import Forum from "../Pages/Forum/Forum";
+import PrivateRous from "./PrivateRous";
+import AppliedTrainer from "../Pages/Dashboard/Admin/AppliedTrainer/AppliedTrainer";
+import AdminRouts from "./AdminRouts";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -58,26 +61,26 @@ export const router = createBrowserRouter([
       },
       {
         path: "/trainerBooking",
-        element: <TrainerBooking />,
+        element: <PrivateRous><TrainerBooking /></PrivateRous>
       },
       {
         path: "/payment",
-        element: <Payment />,
+        element: <PrivateRous><Payment /></PrivateRous>,
       },
       {
         path: "/beATrainer",
-        element: <BeATrainer />
+        element: <PrivateRous><BeATrainer /></PrivateRous>
       }
     ]
   },
   {
     path: "/dashboard",
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRous><Dashboard /></PrivateRous>,
     errorElement: <ErrorPage />,
     children: [
       {
         index: true,
-        element: <AllSubscriber />
+        element: <AdminRouts><AllSubscriber /></AdminRouts>
       },
       {
         path: "allSubscriber",
@@ -86,6 +89,10 @@ export const router = createBrowserRouter([
       {
         path: "allTrainers",
         element: <AllTrainers />
+      },
+      {
+        path: "appliedTrainer",
+        element: <AppliedTrainer />
       },
       {
         path: "balance",

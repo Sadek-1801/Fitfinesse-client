@@ -1,15 +1,35 @@
 import { useState } from "react";
 import { AiOutlineBars } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import toast from "react-hot-toast";
+import { BiLogOut } from "react-icons/bi";
+import { FaDollarSign, FaHome, } from "react-icons/fa";
+import useRole from "../../../Hooks/useRole";
+import { FaPeopleGroup, FaPerson } from "react-icons/fa6";
+import { GiLetterBomb } from "react-icons/gi";
+import { MdOutlineForum, MdSportsGymnastics } from "react-icons/md";
+import { PiChalkboardTeacher } from "react-icons/pi";
 
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const { user } = useAuth()
+    const navigate = useNavigate()
+    const { user, logOut } = useAuth()
+    const [role, isLoading] = useRole()
+    console.log(role);
     const handleToggle = () => {
         setIsOpen(!isOpen)
     }
-    console.log(user);
+    const handleLogout = async () => {
+        try {
+            await logOut();
+            navigate("/")
+            toast.success("You have successfully logged out")
+        } catch (err) {
+            toast.error(err?.message)
+        }
+    }
+    if (isLoading) return <p>Loading ..........</p>
     return (
         <div>
             <div className='bg-gray-800 text-gray-100 flex justify-between md:hidden'>
@@ -58,62 +78,74 @@ const Sidebar = () => {
                 <div className="divide-y">
                     <ul className="pt-2 pb-4 space-y-1 text-sm">
                         {/* Navigation items */}
-                        <li>
+                        {role === 'admin' && <li>
                             <Link to={"allSubscriber"} rel="noopener noreferrer" className="flex items-center p-2 space-x-3 rounded-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current">
-                                    <path d="M68.983,382.642l171.35,98.928a32.082,32.082,0,0,0,32,0l171.352-98.929a32.093,32.093,0,0,0,16-27.713V157.071a32.092,32.092,0,0,0-16-27.713L272.334,30.429a32.086,32.086,0,0,0-32,0L68.983,129.358a32.09,32.09,0,0,0-16,27.713V354.929A32.09,32.09,0,0,0,68.983,382.642ZM272.333,67.38l155.351,89.691V334.449L272.333,246.642ZM256.282,274.327l157.155,88.828-157.1,90.7L99.179,363.125ZM84.983,157.071,240.333,67.38v179.2L84.983,334.39Z"></path>
-                                </svg>
+                                <FaPeopleGroup />
                                 <span>All Subscribers</span>
                             </Link>
-                        </li>
-                        <li>
+                        </li>}
+                        {role === 'admin' && <li>
                             <Link to={"allTrainers"} rel="noopener noreferrer" className="flex items-center p-2 space-x-3 rounded-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current">
-                                    <path d="M68.983,382.642l171.35,98.928a32.082,32.082,0,0,0,32,0l171.352-98.929a32.093,32.093,0,0,0,16-27.713V157.071a32.092,32.092,0,0,0-16-27.713L272.334,30.429a32.086,32.086,0,0,0-32,0L68.983,129.358a32.09,32.09,0,0,0-16,27.713V354.929A32.09,32.09,0,0,0,68.983,382.642ZM272.333,67.38l155.351,89.691V334.449L272.333,246.642ZM256.282,274.327l157.155,88.828-157.1,90.7L99.179,363.125ZM84.983,157.071,240.333,67.38v179.2L84.983,334.39Z"></path>
-                                </svg>
+                                <FaPerson />
                                 <span>All Trainers</span>
                             </Link>
-                        </li>
-                        <li>
+                        </li>}
+                        {role === 'admin' && <li>
+                            <Link to={"appliedTrainer"} rel="noopener noreferrer" className="flex items-center p-2 space-x-3 rounded-md">
+                                <GiLetterBomb />
+                                <span>Applied Trainer</span>
+                            </Link>
+                        </li>}
+                        {role === 'admin' && <li>
                             <Link to={"balance"} rel="noopener noreferrer" className="flex items-center p-2 space-x-3 rounded-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current">
-                                    <path d="M68.983,382.642l171.35,98.928a32.082,32.082,0,0,0,32,0l171.352-98.929a32.093,32.093,0,0,0,16-27.713V157.071a32.092,32.092,0,0,0-16-27.713L272.334,30.429a32.086,32.086,0,0,0-32,0L68.983,129.358a32.09,32.09,0,0,0-16,27.713V354.929A32.09,32.09,0,0,0,68.983,382.642ZM272.333,67.38l155.351,89.691V334.449L272.333,246.642ZM256.282,274.327l157.155,88.828-157.1,90.7L99.179,363.125ZM84.983,157.071,240.333,67.38v179.2L84.983,334.39Z"></path>
-                                </svg>
+                                <FaDollarSign />
                                 <span>Balance</span>
                             </Link>
-                        </li>
-                        <li>
+                        </li>}
+                        {role === 'admin' && <li>
                             <Link to={"addClass"} rel="noopener noreferrer" className="flex items-center p-2 space-x-3 rounded-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current">
-                                    <path d="M68.983,382.642l171.35,98.928a32.082,32.082,0,0,0,32,0l171.352-98.929a32.093,32.093,0,0,0,16-27.713V157.071a32.092,32.092,0,0,0-16-27.713L272.334,30.429a32.086,32.086,0,0,0-32,0L68.983,129.358a32.09,32.09,0,0,0-16,27.713V354.929A32.09,32.09,0,0,0,68.983,382.642ZM272.333,67.38l155.351,89.691V334.449L272.333,246.642ZM256.282,274.327l157.155,88.828-157.1,90.7L99.179,363.125ZM84.983,157.071,240.333,67.38v179.2L84.983,334.39Z"></path>
-                                </svg>
+                                <PiChalkboardTeacher />
                                 <span>Add Class</span>
                             </Link>
-                        </li>
-                        <li>
+                        </li>}
+                        {role === 'trainer' && <li>
                             <Link to={"manageSlots"} rel="noopener noreferrer" className="flex items-center p-2 space-x-3 rounded-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current">
-                                    <path d="M68.983,382.642l171.35,98.928a32.082,32.082,0,0,0,32,0l171.352-98.929a32.093,32.093,0,0,0,16-27.713V157.071a32.092,32.092,0,0,0-16-27.713L272.334,30.429a32.086,32.086,0,0,0-32,0L68.983,129.358a32.09,32.09,0,0,0-16,27.713V354.929A32.09,32.09,0,0,0,68.983,382.642ZM272.333,67.38l155.351,89.691V334.449L272.333,246.642ZM256.282,274.327l157.155,88.828-157.1,90.7L99.179,363.125ZM84.983,157.071,240.333,67.38v179.2L84.983,334.39Z"></path>
-                                </svg>
+                                <MdSportsGymnastics />
                                 <span>Manage Slots</span>
                             </Link>
-                        </li>
-                        <li>
+                        </li>}
+                        {(role === 'admin' || role === "trainer" ) &&<li>
                             <Link to={"addForum"} rel="noopener noreferrer" className="flex items-center p-2 space-x-3 rounded-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current">
-                                    <path d="M68.983,382.642l171.35,98.928a32.082,32.082,0,0,0,32,0l171.352-98.929a32.093,32.093,0,0,0,16-27.713V157.071a32.092,32.092,0,0,0-16-27.713L272.334,30.429a32.086,32.086,0,0,0-32,0L68.983,129.358a32.09,32.09,0,0,0-16,27.713V354.929A32.09,32.09,0,0,0,68.983,382.642ZM272.333,67.38l155.351,89.691V334.449L272.333,246.642ZM256.282,274.327l157.155,88.828-157.1,90.7L99.179,363.125ZM84.983,157.071,240.333,67.38v179.2L84.983,334.39Z"></path>
-                                </svg>
+                                <MdOutlineForum />
                                 <span>Add Forum</span>
                             </Link>
-                        </li>
-                        <li>
+                        </li>}
+                        { role === "trainer" && <li>
                             <Link to={"addNewSlot"} rel="noopener noreferrer" className="flex items-center p-2 space-x-3 rounded-md">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current">
                                     <path d="M68.983,382.642l171.35,98.928a32.082,32.082,0,0,0,32,0l171.352-98.929a32.093,32.093,0,0,0,16-27.713V157.071a32.092,32.092,0,0,0-16-27.713L272.334,30.429a32.086,32.086,0,0,0-32,0L68.983,129.358a32.09,32.09,0,0,0-16,27.713V354.929A32.09,32.09,0,0,0,68.983,382.642ZM272.333,67.38l155.351,89.691V334.449L272.333,246.642ZM256.282,274.327l157.155,88.828-157.1,90.7L99.179,363.125ZM84.983,157.071,240.333,67.38v179.2L84.983,334.39Z"></path>
                                 </svg>
                                 <span>Add New Slot</span>
                             </Link>
+                        </li>}
+                        {/* More navigation items */}
+                    </ul>
+                </div>
+                <hr className="my-6 border-gray-100" />
+                <div className="justify-self-end divide-y">
+                    <ul className="pt-2 pb-4 space-y-1 text-sm">
+                        <li>
+                            <Link to={"/"} rel="noopener noreferrer" className="flex items-center p-2 space-x-3 rounded-md">
+                                <FaHome></FaHome>
+                                <span>Home</span>
+                            </Link>
                         </li>
+                        <li>
+                            <Link onClick={handleLogout} rel="noopener noreferrer" className="flex items-center p-2 space-x-3 rounded-md">
+                                <span className="flex items-center justify-center gap-3"><BiLogOut />Logout </span>
+                            </Link>
+                        </li>
+
                         {/* More navigation items */}
                     </ul>
                 </div>
