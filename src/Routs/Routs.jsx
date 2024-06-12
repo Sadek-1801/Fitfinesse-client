@@ -26,6 +26,8 @@ import PrivateRous from "./PrivateRous";
 import AppliedTrainer from "../Pages/Dashboard/Admin/AppliedTrainer/AppliedTrainer";
 import AdminRouts from "./AdminRouts";
 import AppTrainerDetails from "../Pages/Dashboard/Admin/AppliedTrainer/AppTrainerDetails";
+import Profile from "../Pages/Dashboard/Shared/Profile";
+import TrainerRaout from "./TrainerRaout";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -81,35 +83,40 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
+        path: "profile",
+        element: <Profile />
+      },
+      {
+        path: "allSubscriber",
         element: <AdminRouts><AllSubscriber /></AdminRouts>
       },
       {
         path: "allSubscriber",
-        element: <AllSubscriber />
+        element: <AdminRouts><AllSubscriber /></AdminRouts>
       },
       {
         path: "allTrainers",
-        element: <AllTrainers />
+        element: <AdminRouts><AllTrainers /></AdminRouts>
       },
       {
         path: "appliedTrainer",
-        element: <AppliedTrainer />
+        element: <AdminRouts><AppliedTrainer /></AdminRouts>
       },
       {
         path: "/dashboard/appTrainer/:id",
-        element: <AppTrainerDetails />
+        element: <AdminRouts><AppTrainerDetails /></AdminRouts>
       },
       {
         path: "balance",
-        element: <Balance />
+        element: <AdminRouts><Balance /></AdminRouts>
       },
       {
         path: "addClass",
-        element: <AddClass />
+        element: <AdminRouts><AddClass /></AdminRouts>
       },
       {
         path: "manageSlots",
-        element: <ManageSlots />
+        element: <TrainerRaout><ManageSlots /></TrainerRaout>
       },
       {
         path: "addForum",
@@ -117,7 +124,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "addNewSlot",
-        element: <AddNewSlot/>
+        element: <TrainerRaout><AddNewSlot/></TrainerRaout>
+      },
+      {
+        path: "addNewSlot",
+        element: <TrainerRaout><AddNewSlot/></TrainerRaout>
       },
     ]
   }

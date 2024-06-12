@@ -1,34 +1,52 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { uploadImage } from "../../../Components/Utility/uploadImage";
+import toast from "react-hot-toast";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useRole from "../../../Hooks/useRole";
 
 const AddForum = () => {
+    const axiosSecure = useAxiosSecure()
+    const [role, ] = useRole()
     const [formData, setFormData] = useState({
         name: '',
         title: '',
         postImage: null,
         post: '',
-      });
-    
-      const handleChange = (e) => {
+    });
+
+    const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
-          ...formData,
-          [name]: value,
+            ...formData,
+            [name]: value,
         });
-      };
-    
-      const handleFileChange = (e) => {
+    };
+
+    const handleFileChange = (e) => {
         setFormData({
-          ...formData,
-          postImage: e.target.files[0],
+            ...formData,
+            postImage: e.target.files[0],
         });
-      };
-    
-      const handleSubmit = (e) => {
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle form submission, e.g., send data to server
-        console.log('Form data:', formData);
-      };
+        const profileImageURL = await uploadImage(formData.profileImage)
+        const forumData = {
+            ...formData,
+            role: role,
+            postImage: profileImageURL,
+        }
+        try {
+            const { data } = await axiosSecure.post("/addForum", forumData);
+            toast.success(data.message);
+        } catch (err) {
+            console.log(err?.message);
+            toast.error("Failed to apply. Please try again.");
+        }
+
+    };
     return (
         <div className="bg-gray-900 text-white min-h-screen flex flex-col items-center p-6">
             <Helmet>

@@ -1,11 +1,13 @@
 import toast from "react-hot-toast";
-import { uploadImage } from "../../../../Components/Utility/uploadImage";
-import Select from 'react-select'
+import Select from 'react-select';
 import useAuth from "../../../../Hooks/useAuth";
 import useFetchClassess from "../../../../Hooks/useFetchClasses";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
+import { useQuery } from "@tanstack/react-query";
+import { uploadImage } from "../../../../Components/Utility/uploadImage";
+
 const timeOptions = [
     {
         "value": "mor-four",
@@ -53,17 +55,21 @@ const timeOptions = [
     }
 ];
 
-
-
 const AddNewSlot = () => {
-    const { user } = useAuth()
-    const [classes] = useFetchClassess() // isLoading
-    const axiosSecure = useAxiosSecure()
-
+    const { user, setLoader } = useAuth();
+    const [classes] = useFetchClassess();
+    const axiosSecure = useAxiosSecure();
+    const { data: trainerData = {}, isLoading } = useQuery({
+        queryKey: ['trainerEmail', user?.email],
+        queryFn: async () => {
+            const { data } = await axiosSecure(`/trainer-email/${user?.email}`);
+            return data;
+        }
+    });
 
     const [formData, setFormData] = useState({
         name: '',
-        email: "",
+        email: '',
         age: '',
         profileImage: null,
         skills: [],
@@ -74,6 +80,23 @@ const AddNewSlot = () => {
         bio: ''
     });
 
+    useEffect(() => {
+        if (trainerData) {
+            setFormData({
+                name: trainerData.name || '',
+                email: user?.email || '',
+                age: trainerData.age || '',
+                profileImage: trainerData.profileImage || null,
+                skills: trainerData.skills || [],
+                availableDays: trainerData.availableDays || [],
+                availableTime: trainerData.availableTime || [],
+                socialLinks: trainerData.socialLinks || '',
+                experience: trainerData.experience || '',
+                bio: trainerData.bio || ''
+            });
+        }
+    }, [trainerData, user?.email]);
+
     const skillsOptions = classes;
     const daysOptions = [
         { value: 'sat', label: 'Saturday' },
@@ -81,20 +104,12 @@ const AddNewSlot = () => {
         { value: 'mon', label: 'Monday' },
         { value: 'tue', label: 'Tuesday' },
         { value: 'wed', label: 'Wednesday' },
-        { value: 'thu', label: 'Thirsday' }
-    ]
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
+        { value: 'thu', label: 'Thursday' }
+    ];
 
     const handleAvaiDays = (selectedOptions) => {
         setFormData({ ...formData, availableDays: selectedOptions });
     };
-    // const handleAvaiTime = (selectedOption) => {
-    //     setFormData({ ...formData, availableTime: selectedOption });
-    // };
 
     const handleCheckboxChange = (e) => {
         const { name, checked } = e.target;
@@ -104,6 +119,7 @@ const AddNewSlot = () => {
             setFormData({ ...formData, skills: formData.skills.filter(skill => skill !== name) });
         }
     };
+
     const customStyles = {
         control: (provided) => ({
             ...provided,
@@ -137,17 +153,17 @@ const AddNewSlot = () => {
             color: 'white'
         }),
     };
-    const handleAvaiTime = (selectedOption) => {
-        const selectedSlots = selectedOption.slots.map(slot => ({
-            ...slot,
-            timeOption: selectedOption.value,
-        }));
 
+    const handleAvaiTime = (selectedOption) => {
         setFormData({
             ...formData,
-            availableTime: selectedSlots,
+            availableTime: selectedOption.slots.map(slot => ({
+                ...slot,
+                timeOption: selectedOption.value,
+            })),
         });
     };
+
     const handleSlotChange = (index, field, value) => {
         const updatedSlots = formData.availableTime.map((slot, slotIndex) => (
             slotIndex === index ? { ...slot, [field]: value } : slot
@@ -161,32 +177,28 @@ const AddNewSlot = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(formData);
-        // const profileImageURL = await uploadImage(formData.profileImage)
-        // const trainerData = {
-        //     ...formData,
-        //     profileImage: profileImageURL,
-        //     email: user?.email
-        // }
-
-        // try {
-        //     const { data } = await axiosSecure.post("/beATrainer", trainerData)
-        //     if (data.insertedId) {
-        //         // const userInfo = {
-        //         //     email: user?.email,
-        //         //     status: "pending"
-        //         // }
-        //         // const { data } = await axiosSecure.put(`/user`, userInfo)
-        //         toast.success("You've succesfully Applied! Wait for admin confirmation");
-        //         console.log(data);
-        //         setLoader(false)
-        //     }
-
-        // } catch (err) {
-        //     console.log(err?.message);
-        //     setLoader(false)
-        // }
-
+        const profileImageURL = await uploadImage(formData.profileImage)
+        const trainerData = {
+            ...formData,
+            profileImage: profileImageURL,
+        }
+        try {
+            const { data } = await axiosSecure.patch(`/update-trainer/${user?.email}`, trainerData);
+            if (data.message === "You've successfully updated your profile.") {
+                toast.success(data.message);
+            } else {
+                toast.error(data.message);
+            }
+            setLoader(false);
+        } catch (err) {
+            console.log(err?.message);
+            toast.error("Failed to apply. Please try again.");
+            setLoader(false);
+        }
     };
+
+    if (isLoading) return <p>Loading...</p>;
+
     return (
         <section className="bg-black py-10 min-h-screen flex items-center justify-center">
             <Helmet>
@@ -200,8 +212,8 @@ const AddNewSlot = () => {
                         <input
                             type="text"
                             name="name"
+                            readOnly
                             value={formData.name}
-                            onChange={handleChange}
                             className="w-full p-2 bg-gray-800 text-white border border-[#E01717] rounded"
                         />
                     </div>
@@ -212,6 +224,7 @@ const AddNewSlot = () => {
                             defaultValue={user?.email}
                             type="email"
                             name="email"
+                            value={formData.email}
                             className="w-full p-2 bg-gray-800 text-white border border-[#E01717] rounded"
                         />
                     </div>
@@ -220,9 +233,8 @@ const AddNewSlot = () => {
                         <input
                             type="number"
                             name="age"
-                            required
+                            readOnly
                             value={formData.age}
-                            onChange={handleChange}
                             className="w-full p-2 bg-gray-800 text-white border border-[#E01717] rounded"
                         />
                     </div>
@@ -279,13 +291,13 @@ const AddNewSlot = () => {
                             required
                         />
                     </div>
-                    {formData.availableTime.map((slot, index) => (
+                    {formData.availableTime.length > 0 && formData.availableTime.map((slot, index) => (
                         <div key={index} className="mb-4 p-4 bg-gray-700 rounded-lg">
                             <div className="mb-2">
                                 <label className="block text-sm font-medium text-gray-300">Slot Name</label>
                                 <input
                                     type="text"
-                                    value={slot.slotName}
+                                    value={slot?.slotName}
                                     onChange={(e) => handleSlotChange(index, 'slotName', e.target.value)}
                                     className="w-full p-2 bg-gray-800 text-white border border-[#E01717] rounded"
                                 />
@@ -306,9 +318,9 @@ const AddNewSlot = () => {
                         <input
                             type="text"
                             name="socialLinks"
-                            required
                             value={formData.socialLinks}
-                            onChange={handleChange}
+                            required
+                            onChange={(e) => setFormData({ ...formData, socialLinks: e.target.value })}
                             placeholder="e.g., https://instagram.com/yourprofile"
                             className="w-full p-2 bg-gray-800 text-white border border-[#E01717] rounded"
                         />
@@ -320,7 +332,7 @@ const AddNewSlot = () => {
                             name="experience"
                             required
                             value={formData.experience}
-                            onChange={handleChange}
+                            onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
                             className="w-full p-2 bg-gray-800 text-white border border-[#E01717] rounded"
                         />
                     </div>
@@ -330,7 +342,7 @@ const AddNewSlot = () => {
                             name="bio"
                             value={formData.bio}
                             required
-                            onChange={handleChange}
+                            onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
                             rows="4"
                             className="w-full p-2 bg-gray-800 text-white border border-[#E01717] rounded"
                         ></textarea>

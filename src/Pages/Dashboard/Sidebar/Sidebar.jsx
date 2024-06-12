@@ -19,7 +19,6 @@ const Sidebar = () => {
     const handleToggle = () => {
         setIsOpen(!isOpen)
     }
-    console.log(user);
     const handleLogout = async () => {
         try {
             await logOut();
@@ -78,6 +77,18 @@ const Sidebar = () => {
                 <div className="divide-y">
                     <ul className="pt-2 pb-4 space-y-1 text-sm">
                         {/* Navigation items */}
+                        <li>
+                            <Link to={"profile"} rel="noopener noreferrer" className="flex items-center p-2 space-x-3 rounded-md">
+                                <FaPeopleGroup />
+                                <span>Profile</span>
+                            </Link>
+                        </li>
+                        {role === 'member' &&<li>
+                            <Link to={"activityLog"} rel="noopener noreferrer" className="flex items-center p-2 space-x-3 rounded-md">
+                                <FaPeopleGroup />
+                                <span>Activity Log</span>
+                            </Link>
+                        </li>}
                         {role === 'admin' && <li>
                             <Link to={"allSubscriber"} rel="noopener noreferrer" className="flex items-center p-2 space-x-3 rounded-md">
                                 <FaPeopleGroup />

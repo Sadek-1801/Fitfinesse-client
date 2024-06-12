@@ -1,20 +1,42 @@
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../../../Hooks/useAuth";
 import useFetchTrainer from "../../../../Hooks/useFetchTrainer";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 
 const ManageSlots = () => {
-    const [fetchTrainer, isLoading] = useFetchTrainer()
-    const { loader} = useAuth()
+    const [fetchTrainer, isLoading, refetch] = useFetchTrainer();
+    const { loader } = useAuth();
+    const axiosSecure = useAxiosSecure()
 
-    
+    const handleDelete = async (slotName) => {
+        try {
+            const result = await Swal.fire({
+                title: 'Are you sure?',
+                text: `You won't be able to revert this!`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            });
 
-
-    const handleDelete = (id) => {
-        console.log(id);
+            if (result.isConfirmed) {
+                const { data } = await axiosSecure.delete(`/slots/${slotName}`);
+                if(data.message === 'Slot deleted successfully'){
+                    Swal.fire('Deleted!', 'Your slot has been deleted.', 'success');
+                    refetch();
+                }else{
+                    Swal.fire('Error!', 'There was an issue deleting the slot.', 'error');
+                }
+            }
+        } catch (error) {
+            Swal.fire('Error!', 'There was an issue deleting the slot.', 'error');
+        }
     };
 
+    if (isLoading || loader) return <div><p>Loading......</p></div>;
 
-    if (isLoading || loader) return <div><p>loading......</p></div>
     return (
         <div className="bg-gray-900 text-white min-h-screen p-6 flex flex-col items-center">
             <Helmet>

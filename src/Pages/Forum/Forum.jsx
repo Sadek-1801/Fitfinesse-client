@@ -10,14 +10,14 @@ import { Helmet } from 'react-helmet-async';
 const Forum = () => {
     const axiosCommon = useAxiosCommon();
     const queryClient = useQueryClient();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const { user } = useAuth();
     const [expandedPosts, setExpandedPosts] = useState({});
     const [page, setPage] = useState(1);
-    const limit = 6;
+    const [limit, setLimit] = useState(6);
 
     const { data, isLoading } = useQuery({
-        queryKey: ['all-forum-posts', page],
+        queryKey: ['all-forum-posts', page, limit],
         queryFn: async () => {
             const { data } = await axiosCommon.get(`/allForumPosts?page=${page}&limit=${limit}`);
             return data;
@@ -29,14 +29,14 @@ const Forum = () => {
             await axiosCommon.post('/vote', { postId, voteType });
         },
         onSuccess: () => {
-            queryClient.invalidateQueries(['all-forum-posts', page]);
+            queryClient.invalidateQueries(['all-forum-posts', page, limit]);
         }
     });
 
     const handleVote = (postId, voteType) => {
         if (!user) {
             toast.error('Please log in to vote.');
-            navigate("/login")
+            navigate("/login");
             return;
         }
         voteMutation.mutate({ postId, voteType });
@@ -48,6 +48,7 @@ const Forum = () => {
             [postId]: !prev[postId]
         }));
     };
+
     if (isLoading) return <div>Loading ...........</div>;
 
     const { total, result: allForumPosts } = data;
@@ -65,6 +66,19 @@ const Forum = () => {
                     Stay updated with the latest discussions
                 </p>
             </div>
+            <div className="mb-4 flex justify-end">
+                <label htmlFor="postsPerPage" className="text-gray-300 mr-2">Posts per page:</label>
+                <select
+                    id="postsPerPage"
+                    value={limit}
+                    onChange={(e) => setLimit(Number(e.target.value))}
+                    className="bg-gray-800 text-white rounded p-2"
+                >
+                    <option value={6}>6</option>
+                    <option value={12}>12</option>
+                    <option value={18}>18</option>
+                </select>
+            </div>
             <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
                 {allForumPosts.map((post) => (
                     <div key={post._id} className="border border-gray-400 rounded-lg p-6 flex flex-col">
@@ -72,8 +86,13 @@ const Forum = () => {
                             <img className="relative z-10 object-cover w-full rounded-md h-96" src={post.postImage} alt="" />
                             <div className="relative z-20 max-w-lg p-6 mx-auto -mt-20 rounded-md shadow bg-gray-900">
                                 <div className="mb-4">
-                                    <h3 className="text-2xl font-semibold">{post.title}</h3>
-                                    <div className="text-gray-400 text-sm">{post.name} - {post.date}</div>
+                                    <h3 className="text-2xl font-semibold">
+                                        {post.title}
+                                        
+                                    </h3>
+                                    <div className="text-gray-400 text-sm">
+                                        {post.name}<span className="ml-2 bg-red-600 text-white text-sm font-semibold py-1 px-2 rounded">{post?.role}</span> - {post.date}
+                                    </div>
                                 </div>
                                 <p className="flex-grow mb-4">
                                     {expandedPosts[post._id] ? post.post : `${post.post.slice(0, 200)}...`}
@@ -92,7 +111,6 @@ const Forum = () => {
                                     <button onClick={() => handleVote(post._id, 'down')} className="text-red-500 text-2xl">
                                         <FaThumbsDown />
                                     </button>
-                                    
                                 </div>
                             </div>
                         </div>
@@ -101,6 +119,15 @@ const Forum = () => {
             </div>
             <div className="flex justify-center mt-8">
                 <button onClick={() => setPage(page => Math.max(page - 1, 1))} disabled={page === 1} className="bg-btn contrast-50 hover:contrast-100 text-white px-4 py-2 rounded-md mr-2">Prev</button>
+                {Array.from({ length: totalPages }, (_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => setPage(index + 1)}
+                        className={`px-4 py-2 mx-1 rounded ${page === index + 1 ? 'bg-red-600 text-white' : 'bg-gray-800 text-gray-400 hover:bg-gray-600'}`}
+                    >
+                        {index + 1}
+                    </button>
+                ))}
                 <button onClick={() => setPage(page => Math.min(page + 1, totalPages))} disabled={page === totalPages} className="bg-btn contrast-50 hover:contrast-100 text-white px-4 py-2 rounded-md">Next</button>
             </div>
         </div>
