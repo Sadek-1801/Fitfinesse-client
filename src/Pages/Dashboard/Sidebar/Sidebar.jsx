@@ -16,10 +16,10 @@ const Sidebar = () => {
     const navigate = useNavigate()
     const { user, logOut } = useAuth()
     const [role, isLoading] = useRole()
-    console.log(role);
     const handleToggle = () => {
         setIsOpen(!isOpen)
     }
+    console.log(user);
     const handleLogout = async () => {
         try {
             await logOut();

@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useState } from "react";
 import useFetchClassess from "../../Hooks/useFetchClasses";
 import Select from 'react-select'
 import { uploadImage } from "../../Components/Utility/uploadImage";
@@ -40,126 +40,126 @@ const BeATrainer = () => {
             "value": "mor-four",
             "label": "Morning: 7am to 11am",
             "slots": [
-              {
-                "slotName": "Slot 7-8",
-                "duration": "1 hour",
-                "status": "available"
-              },
-              {
-                "slotName": "Slot 8-9",
-                "duration": "1 hour",
-                "status": "available"
-              },
-              {
-                "slotName": "Slot 9-10",
-                "duration": "1 hour",
-                "status": "available"
-              },
-              {
-                "slotName": "Slot 10-11",
-                "duration": "1 hour",
-                "status": "available"
-              }
+                {
+                    "slotName": "Slot 7-8",
+                    "duration": "1 hour",
+                    "status": "available"
+                },
+                {
+                    "slotName": "Slot 8-9",
+                    "duration": "1 hour",
+                    "status": "available"
+                },
+                {
+                    "slotName": "Slot 9-10",
+                    "duration": "1 hour",
+                    "status": "available"
+                },
+                {
+                    "slotName": "Slot 10-11",
+                    "duration": "1 hour",
+                    "status": "available"
+                }
             ]
-          },
-          {
+        },
+        {
             "value": "mor-six",
             "label": "Morning: 7am to 1pm",
             "slots": [
-              {
-                "slotName": "Slot 7-8",
-                "duration": "1 hour",
-                "status": "available"
-              },
-              {
-                "slotName": "Slot 8-9",
-                "duration": "1 hour",
-                "status": "available"
-              },
-              {
-                "slotName": "Slot 9-10",
-                "duration": "1 hour",
-                "status": "available"
-              },
-              {
-                "slotName": "Slot 10-11",
-                "duration": "1 hour",
-                "status": "available"
-              },
-              {
-                "slotName": "Slot 11-12",
-                "duration": "1 hour",
-                "status": "available"
-              },
-              {
-                "slotName": "Slot 12-13",
-                "duration": "1 hour",
-                "status": "available"
-              }
+                {
+                    "slotName": "Slot 7-8",
+                    "duration": "1 hour",
+                    "status": "available"
+                },
+                {
+                    "slotName": "Slot 8-9",
+                    "duration": "1 hour",
+                    "status": "available"
+                },
+                {
+                    "slotName": "Slot 9-10",
+                    "duration": "1 hour",
+                    "status": "available"
+                },
+                {
+                    "slotName": "Slot 10-11",
+                    "duration": "1 hour",
+                    "status": "available"
+                },
+                {
+                    "slotName": "Slot 11-12",
+                    "duration": "1 hour",
+                    "status": "available"
+                },
+                {
+                    "slotName": "Slot 12-13",
+                    "duration": "1 hour",
+                    "status": "available"
+                }
             ]
-          },
-          {
+        },
+        {
             "value": "eve-four",
             "label": "Evening: 4pm to 8pm",
             "slots": [
-              {
-                "slotName": "Slot 16-17",
-                "duration": "1 hour",
-                "status": "available"
-              },
-              {
-                "slotName": "Slot 17-18",
-                "duration": "1 hour",
-                "status": "available"
-              },
-              {
-                "slotName": "Slot 18-19",
-                "duration": "1 hour",
-                "status": "available"
-              },
-              {
-                "slotName": "Slot 19-20",
-                "duration": "1 hour",
-                "status": "available"
-              }
+                {
+                    "slotName": "Slot 16-17",
+                    "duration": "1 hour",
+                    "status": "available"
+                },
+                {
+                    "slotName": "Slot 17-18",
+                    "duration": "1 hour",
+                    "status": "available"
+                },
+                {
+                    "slotName": "Slot 18-19",
+                    "duration": "1 hour",
+                    "status": "available"
+                },
+                {
+                    "slotName": "Slot 19-20",
+                    "duration": "1 hour",
+                    "status": "available"
+                }
             ]
-          },
-          {
+        },
+        {
             "value": "eve-six",
             "label": "Evening: 4pm to 10pm",
             "slots": [
-              {
-                "slotName": "Slot 16-17",
-                "duration": "1 hour",
-                "status": "available"
-              },
-              {
-                "slotName": "Slot 17-18",
-                "duration": "1 hour",
-                "status": "available"
-              },
-              {
-                "slotName": "Slot 18-19",
-                "duration": "1 hour",
-                "status": "available"
-              },
-              {
-                "slotName": "Slot 19-20",
-                "duration": "1 hour",
-                "status": "available"
-              },
-              {
-                "slotName": "Slot 20-21",
-                "duration": "1 hour",
-                "status": "available"
-              },
-              {
-                "slotName": "Slot 21-22",
-                "duration": "1 hour",
-                "status": "available"
-              }
+                {
+                    "slotName": "Slot 16-17",
+                    "duration": "1 hour",
+                    "status": "available"
+                },
+                {
+                    "slotName": "Slot 17-18",
+                    "duration": "1 hour",
+                    "status": "available"
+                },
+                {
+                    "slotName": "Slot 18-19",
+                    "duration": "1 hour",
+                    "status": "available"
+                },
+                {
+                    "slotName": "Slot 19-20",
+                    "duration": "1 hour",
+                    "status": "available"
+                },
+                {
+                    "slotName": "Slot 20-21",
+                    "duration": "1 hour",
+                    "status": "available"
+                },
+                {
+                    "slotName": "Slot 21-22",
+                    "duration": "1 hour",
+                    "status": "available"
+                }
             ]
-          }
+        }
     ]
 
     const handleChange = (e) => {
@@ -237,21 +237,17 @@ const BeATrainer = () => {
         }
 
         try {
-            const { data } = await axiosSecure.post("/beATrainer", trainerData)
-            if (data.insertedId) {
-                const userInfo = {
-                    email: user?.email,
-                    status: "pending"
-                }
-                const { data } = await axiosSecure.put(`/user`, userInfo)
-                toast.success("You've succesfully Applied! Wait for admin confirmation");
-                console.log(data);
-                setLoader(false)
+            const { data } = await axiosSecure.post("/beATrainer", trainerData);
+            if (data.message === "You've successfully applied! Wait for admin confirmation.") {
+                toast.success(data.message);
+            } else {
+                toast.error(data.message);
             }
-
+            setLoader(false);
         } catch (err) {
             console.log(err?.message);
-            setLoader(false)
+            toast.error("Failed to apply. Please try again.");
+            setLoader(false);
         }
 
     };

@@ -14,21 +14,21 @@ const TrainerBooking = () => {
             id: 'basic',
             name: 'Basic',
             description: 'Access to basic training sessions with limited features.',
-            price: '10.00',
+            price: 10.00,
             features: ['Access to basic training sessions', 'Group chat support'],
         },
         {
             id: 'standard',
             name: 'Standard',
             description: 'Access to all training sessions with standard features.',
-            price: '20.00',
+            price: 20.00,
             features: ['Access to all training sessions', 'Analytics platform', 'Group chat support', '3-month personalized training plan'],
         },
         {
             id: 'premium',
             name: 'Premium',
             description: 'Access to all training sessions with advanced features.',
-            price: '30.00',
+            price: 30.00,
             features: ['Access to all training sessions', 'Advanced analytics platform', 'Group chat support', 'Personalized training plan updated monthly', 'Weekly 1-on-1 training sessions'],
         },
     ];
@@ -43,7 +43,7 @@ const TrainerBooking = () => {
         const {price, name} = packageData;
         const traineingSession = {
             ...trainer, 
-            price,
+            price: parseFloat(price),
             packageName: name
         }
         setTrainer(traineingSession);

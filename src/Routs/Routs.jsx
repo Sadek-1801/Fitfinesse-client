@@ -25,6 +25,7 @@ import Forum from "../Pages/Forum/Forum";
 import PrivateRous from "./PrivateRous";
 import AppliedTrainer from "../Pages/Dashboard/Admin/AppliedTrainer/AppliedTrainer";
 import AdminRouts from "./AdminRouts";
+import AppTrainerDetails from "../Pages/Dashboard/Admin/AppliedTrainer/AppTrainerDetails";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -93,6 +94,10 @@ export const router = createBrowserRouter([
       {
         path: "appliedTrainer",
         element: <AppliedTrainer />
+      },
+      {
+        path: "/dashboard/appTrainer/:id",
+        element: <AppTrainerDetails />
       },
       {
         path: "balance",

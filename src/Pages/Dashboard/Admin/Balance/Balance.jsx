@@ -1,11 +1,33 @@
+import { useQuery } from '@tanstack/react-query';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
+import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
+import useAuth from '../../../../Hooks/useAuth';
 const Balance = () => {
-
+    const axiosSecure = useAxiosSecure()
+    const {loader} = useAuth()
+    const {data: transaction = [], isLoading} = useQuery({
+        queryKey: ['transaction'],
+        queryFn: async() => {
+            const {data} = await axiosSecure('/transaction')
+            return data
+        }
+    })
+    const totalBalance = transaction.reduce((acc, cur) => {
+        return acc + cur.price
+    }, 0)
+    const {data: subscribers = []} = useQuery({
+        queryKey: ['subscribers'],
+        queryFn: async() => {
+            const {data} = await axiosSecure("/subscribers")
+            return data
+        }
+    })
+    console.log(transaction);
     const pieData = [
-        { name: 'Subscribers', value: 400 },
-        { name: 'Paid Members', value: 300 },
+        { name: 'Subscribers', value: subscribers.length },
+        { name: 'Paid Members', value: transaction.length },
     ];
-
+    if(isLoading || loader) return <p>Loading ......</p>
     // Colors for the pie chart
     const COLORS = ['#8884d8', '#82ca9d'];
     return (
@@ -16,7 +38,7 @@ const Balance = () => {
                 {/* Balance Section */}
                 <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-8">
                     <h2 className="text-xl font-semibold mb-4">Total Balance</h2>
-                    <p className="text-3xl">$12,345.67</p>
+                    <p className="text-3xl">${totalBalance}</p>
                 </div>
 
                 {/* History Section */}
@@ -31,14 +53,12 @@ const Balance = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr className="bg-gray-800">
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-white">-$500</td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-white">John Doe</td>
-                                </tr>
-                                <tr className="bg-gray-800">
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-white">+$1000</td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-white">Jane Smith</td>
-                                </tr>
+                                {transaction.slice(0, 6).map(item => <tr
+                                key={item._id} 
+                                className="bg-gray-800">
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-white">${item?.price}</td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-white">{item?.userName}</td>
+                                </tr>)}
                                 {/* Add more rows as needed */}
                             </tbody>
                         </table>

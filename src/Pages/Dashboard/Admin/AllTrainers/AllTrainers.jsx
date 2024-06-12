@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
-import { AiOutlineDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
+import { TiUserDelete } from "react-icons/ti";
 
 const AllTrainers = () => {
     const axiosSecure = useAxiosSecure()
@@ -25,7 +25,8 @@ const AllTrainers = () => {
           }).then(async(result) => {
             if (result.isConfirmed) {
                 const {data} = await axiosSecure.patch(`/deleteTrainer/${email}`)
-                if(data.modifiedCount > 0){
+                console.log(data);
+                if(data.message === "Trainer deleted successfully"){
                     Swal.fire({
                       title: "Deleted!",
                       text: "Your file has been deleted.",
@@ -40,7 +41,7 @@ const AllTrainers = () => {
     return (
         <div className="overflow-x-auto">
             <div className="flex flex-col items-center justify-center mx-auto sm:w-3/5">
-            <h1 className="text-3xl text-white font-bold text-center mb-4">Admin Panel: All Subscribers Information</h1>
+            <h1 className="text-3xl text-white font-bold text-center mb-4">Admin Panel: All Trainers Information</h1>
             </div>
             <table className="min-w-full bg-gray-900 text-white">
                 <thead>
@@ -57,7 +58,7 @@ const AllTrainers = () => {
                             <td className="py-3 px-4 w-1/5">{index + 1}</td>
                             <td className="py-3 px-4">{item.email}</td>
                             <td className="py-3 px-4">{item.name}</td>
-                            <td className="py-3 px-4"><button onClick={() => handleDelete(item.email)}><AiOutlineDelete /></button></td>
+                            <td className="py-3 px-4"><button onClick={() => handleDelete(item.email)}><TiUserDelete /></button></td>
                         </tr>
                     ))}
                 </tbody>

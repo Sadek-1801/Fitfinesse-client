@@ -50,8 +50,8 @@ const AuthProvider = ({ children }) => {
     const saveUser = async (user) => {
         const userInfo = {
             email: user?.email,
-            name: user?.displayName,
-            photo: user?.photoURL,
+            name: user.displayName,
+            photo: user.photoURL,
             role: "member",
             status: "verified"
         }

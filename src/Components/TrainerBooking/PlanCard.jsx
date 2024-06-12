@@ -43,7 +43,7 @@ PlanCard.propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
     description: PropTypes.string,
-    price: PropTypes.string,
+    price: PropTypes.number,
     features: PropTypes.array,
     selected: PropTypes.any,
     onSelect: PropTypes.any

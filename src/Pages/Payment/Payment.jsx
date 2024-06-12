@@ -28,7 +28,7 @@ const Payment = () => {
           }).then(async(result) => {
             if (result.isConfirmed) {
                 const {data} = await axiosSecure.post("/trainer-booking", formData)
-                console.log(data);
+                
                 if(data.insertedId){
                     Swal.fire({
                       title: "Booking Confirmed!",
