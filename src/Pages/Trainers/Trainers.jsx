@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import useAxiosCommon from "../../Hooks/useAxiosCommon";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
 
 const Trainers = () => {
     const axiosCommon = useAxiosCommon();
@@ -14,6 +15,9 @@ const Trainers = () => {
     if (isLoading) return <p className="min-h-screen flex items-center justify-center text-6xl text-white bg-black">Loading........</p>
     return (
         <div className="bg-black min-h-screen p-8">
+            <Helmet>
+                <title>FitFinesse | All Trainers</title>
+            </Helmet>
             <h1 className="text-3xl text-white text-center mb-8">Meet Our Trainers</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                 {/* {trainers.map((trainer, index) => (

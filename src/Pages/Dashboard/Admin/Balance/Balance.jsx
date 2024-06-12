@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import useAuth from '../../../../Hooks/useAuth';
+import { Helmet } from 'react-helmet-async';
 const Balance = () => {
     const axiosSecure = useAxiosSecure()
     const {loader} = useAuth()
@@ -32,6 +33,9 @@ const Balance = () => {
     const COLORS = ['#8884d8', '#82ca9d'];
     return (
         <div className="text-white  p-8">
+            <Helmet>
+                <title>FitFinesse | Balance</title>
+            </Helmet>
             <div className="container mx-auto">
                 <h1 className="text-3xl text-white font-bold text-center mb-4">Admin Panel: Balance & Transaction History</h1>
 

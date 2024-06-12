@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { TrainerBookingContext } from "../../Providers/TrainerBookingProvider";
 import PlanCard from "../../Components/TrainerBooking/PlanCard";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const TrainerBooking = () => {
     const { trainer, setTrainer } = useContext(TrainerBookingContext)
@@ -53,6 +54,9 @@ const TrainerBooking = () => {
     return (
         <div>
             <div className="bg-black">
+            <Helmet>
+                <title>FitFinesse | Trainer Booking</title>
+            </Helmet>
                 <div className="container px-6 py-8 mx-auto">
                     <div className="">
                         <div className="flex flex-col items-center">

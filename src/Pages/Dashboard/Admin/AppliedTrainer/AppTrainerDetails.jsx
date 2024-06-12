@@ -1,6 +1,7 @@
 import {  useParams } from "react-router-dom";
 import useAxiosCommon from "../../../../Hooks/useAxiosCommon";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
 
 const AppTrainerDetails = () => {
     const { id } = useParams()
@@ -17,6 +18,9 @@ const AppTrainerDetails = () => {
     if (isLoading) return <p>Loading..........</p>
     return (
         <div className="container mx-auto p-6 bg-gray-900 text-white">
+            <Helmet>
+                <title>FitFinesse | Applied Trainer Details</title>
+            </Helmet>
         <div className="text-center">
         <h2 className="text-4xl font-bold mb-8">All You Need To Know About Mr: {appTrainer.name}</h2>
         </div>

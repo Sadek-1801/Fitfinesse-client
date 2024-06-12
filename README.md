@@ -29,13 +29,13 @@ Visit the live site at [FitFinesse Live](https://fitfinesse.netlify.app/)
 1. **Clone the Repository**
 
     ```sh client-side
-    git clone https://github.com/programming-hero-web-course1/b9a12-server-side-Sadek-1801.git
+    git clone https://github.com/programming-hero-web-course1/b9a12-client-side-Sadek-1801.git
     cd fitfinesse
     ```
 
     ```sh server-side
     git clone https://github.com/programming-hero-web-course1/b9a12-server-side-Sadek-1801.git
-    cd fitfinesse
+    cd fitfinesse-server
     ```
 
 2. **Install Dependencies**

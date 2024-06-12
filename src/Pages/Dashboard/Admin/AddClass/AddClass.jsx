@@ -2,6 +2,7 @@ import { useState } from "react";
 import { uploadImage } from "../../../../Components/Utility/uploadImage";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const AddClass = () => {
     const axiosSecure = useAxiosSecure()
@@ -33,6 +34,9 @@ const AddClass = () => {
     };
     return (
         <div className="bg-gray-900 text-white min-h-screen flex items-center justify-center p-6">
+            <Helmet>
+                <title>FitFinesse | Add Classes</title>
+            </Helmet>
             <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
                 <h1 className="text-2xl font-bold mb-6">Add New Class</h1>
                 <form onSubmit={handleSubmit}>

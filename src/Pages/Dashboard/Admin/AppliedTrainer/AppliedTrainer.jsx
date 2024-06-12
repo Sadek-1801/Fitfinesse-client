@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
+import { Helmet } from "react-helmet-async";
 
 const AppliedTrainer = () => {
   const axiosSecure = useAxiosSecure();
@@ -78,6 +79,9 @@ const AppliedTrainer = () => {
 
   return (
     <div className="bg-black text-white p-8 min-h-screen">
+      <Helmet>
+                <title>FitFinesse | Applied Trainer</title>
+            </Helmet>
       <h1 className="text-3xl font-bold text-center mb-8">Applied Trainers</h1>
       <div className="overflow-x-auto">
         <table className="min-w-full bg-gray-800 text-white rounded-lg">

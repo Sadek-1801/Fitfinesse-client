@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const AddForum = () => {
     const [formData, setFormData] = useState({
@@ -30,6 +31,9 @@ const AddForum = () => {
       };
     return (
         <div className="bg-gray-900 text-white min-h-screen flex flex-col items-center p-6">
+            <Helmet>
+                <title>FitFinesse | Add Forum</title>
+            </Helmet>
             <h1 className="text-2xl font-bold mb-6">Add Forum Post</h1>
             <form onSubmit={handleSubmit} className="w-full max-w-lg bg-gray-800 p-6 rounded-lg">
                 <div className="mb-4">

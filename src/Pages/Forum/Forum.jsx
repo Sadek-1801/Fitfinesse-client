@@ -5,6 +5,7 @@ import useAuth from '../../Hooks/useAuth';
 import { FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const Forum = () => {
     const axiosCommon = useAxiosCommon();
@@ -55,6 +56,9 @@ const Forum = () => {
 
     return (
         <div className="bg-black text-white p-8">
+            <Helmet>
+                <title>FitFinesse | Forum</title>
+            </Helmet>
             <div className="flex flex-col items-center justify-center mx-auto sm:w-3/5">
                 <h1 className="text-3xl text-white font-bold text-center mb-4">Featured Forum Posts</h1>
                 <p className="text-center text-gray-300 mb-12">

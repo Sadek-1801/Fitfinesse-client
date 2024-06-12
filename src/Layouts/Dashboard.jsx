@@ -1,9 +1,13 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../Pages/Dashboard/Sidebar/Sidebar";
+import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
     return (
         <div className='relative min-h-screen md:flex'>
+            <Helmet>
+                <title>FitFinesse | Dashboard</title>
+            </Helmet>
             <div className="bg-gray-900">
                 <Sidebar />
             </div>

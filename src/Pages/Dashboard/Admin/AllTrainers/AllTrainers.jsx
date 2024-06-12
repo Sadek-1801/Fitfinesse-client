@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { TiUserDelete } from "react-icons/ti";
+import { Helmet } from "react-helmet-async";
 
 const AllTrainers = () => {
     const axiosSecure = useAxiosSecure()
@@ -40,6 +41,9 @@ const AllTrainers = () => {
     if(isLoading) return <p>Loading ...........</p>
     return (
         <div className="overflow-x-auto">
+            <Helmet>
+                <title>FitFinesse |All Trainers</title>
+            </Helmet>
             <div className="flex flex-col items-center justify-center mx-auto sm:w-3/5">
             <h1 className="text-3xl text-white font-bold text-center mb-4">Admin Panel: All Trainers Information</h1>
             </div>

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import useAuth from "../../../../Hooks/useAuth";
 import useFetchTrainer from "../../../../Hooks/useFetchTrainer";
 
@@ -16,6 +17,9 @@ const ManageSlots = () => {
     if (isLoading || loader) return <div><p>loading......</p></div>
     return (
         <div className="bg-gray-900 text-white min-h-screen p-6 flex flex-col items-center">
+            <Helmet>
+                <title>FitFinesse | Manage Slots</title>
+            </Helmet>
             <h1 className="text-2xl font-bold mb-6">Manage Slots</h1>
             <div className="w-full max-w-4xl">
                 <table className="w-full table-auto">

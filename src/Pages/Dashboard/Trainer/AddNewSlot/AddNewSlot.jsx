@@ -5,6 +5,7 @@ import useAuth from "../../../../Hooks/useAuth";
 import useFetchClassess from "../../../../Hooks/useFetchClasses";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 const timeOptions = [
     {
         "value": "mor-four",
@@ -188,6 +189,9 @@ const AddNewSlot = () => {
     };
     return (
         <section className="bg-black py-10 min-h-screen flex items-center justify-center">
+            <Helmet>
+                <title>FitFinesse | Add New Slots</title>
+            </Helmet>
             <div className="container mx-auto p-6 bg-gray-900 rounded-lg shadow-lg w-full max-w-lg">
                 <h2 className="text-white text-3xl font-bold mb-8 text-center">Become a Trainer</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">

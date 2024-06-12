@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const AllSubscriber = () => {
     const axiosSecure = useAxiosSecure()
@@ -13,6 +14,9 @@ const AllSubscriber = () => {
     if(isLoading) return <p>Loading ...........</p>
     return (
         <div className="overflow-x-auto">
+            <Helmet>
+                <title>FitFinesse | All Subscribers</title>
+            </Helmet>
             <div className="flex flex-col items-center justify-center mx-auto sm:w-3/5">
             <h1 className="text-3xl text-white font-bold text-center mb-4">Admin Panel: All Subscribers Information</h1>
             </div>

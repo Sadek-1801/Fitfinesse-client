@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const Payment = () => {
     const { trainer } = useContext(TrainerBookingContext)
@@ -50,6 +51,9 @@ const Payment = () => {
     }
     return (
         <div className="min-h-screen bg-black text-white flex justify-center items-center">
+            <Helmet>
+                <title>FitFinesse | Payment</title>
+            </Helmet>
             <form onSubmit={handleSubmit} className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
                 <h2 className="text-2xl font-bold mb-4">Trainer Information</h2>
                 <div className="mb-4">
