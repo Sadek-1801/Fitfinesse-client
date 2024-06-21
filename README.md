@@ -101,7 +101,6 @@ Visit and Server site at [FitFinesse Server](https://github.com/Sadek-1801/fitfi
     ```
   - Create a `.env` file in the root of your project in the serverside and add the following variables:
     ```plaintext
-    PORT=9000
     DB_USER=your database userName in MongoDB
     DB_PASS=your database password in MongoDB
     ```
