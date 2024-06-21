@@ -11,6 +11,10 @@ FitFinesse is a comprehensive fitness class booking platform designed to help us
 
 Visit the live site at [FitFinesse Live](https://fitfinesse.netlify.app/)
 
+## Server Site Repo
+
+Visit and Server site at [FitFinesse Server](https://github.com/Sadek-1801/fitfinesse-server)
+
 ## Features
 
 - **User Authentication:** Secure login and registration system for users.
@@ -29,12 +33,12 @@ Visit the live site at [FitFinesse Live](https://fitfinesse.netlify.app/)
 1. **Clone the Repository**
 
     ```sh client-side
-    git clone https://github.com/programming-hero-web-course1/b9a12-client-side-Sadek-1801.git
-    cd fitfinesse
+    git clone https://github.com/Sadek-1801/Fitfinesse-client.git
+    cd Fitfinesse-client
     ```
 
     ```sh server-side
-    git clone https://github.com/programming-hero-web-course1/b9a12-server-side-Sadek-1801.git
+    git clone https://github.com/Sadek-1801/fitfinesse-server.git
     cd fitfinesse-server
     ```
 
