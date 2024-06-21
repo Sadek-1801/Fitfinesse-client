@@ -7,8 +7,8 @@ import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 const ManageSlots = () => {
     const [fetchTrainer, isLoading, refetch] = useFetchTrainer();
     const { loader } = useAuth();
-    const axiosSecure = useAxiosSecure()
-
+    const axiosSecure = useAxiosSecure();
+    
     const handleDelete = async (slotName) => {
         try {
             const result = await Swal.fire({
@@ -23,11 +23,11 @@ const ManageSlots = () => {
 
             if (result.isConfirmed) {
                 const { data } = await axiosSecure.delete(`/slots/${slotName}`);
-                if(data.message === 'Slot deleted successfully'){
+                if (data.message === 'Slot deleted successfully') {
                     Swal.fire('Deleted!', 'Your slot has been deleted.', 'success');
                     refetch();
-                }else{
-                    Swal.fire('Error!', 'There was an issue deleting the slot.', 'error');
+                } else {
+                    Swal.fire(`Error Message: ${data.message}`);
                 }
             }
         } catch (error) {
@@ -35,7 +35,9 @@ const ManageSlots = () => {
         }
     };
 
-    if (isLoading || loader) return <div><p>Loading......</p></div>;
+    if (isLoading || loader || !fetchTrainer || !fetchTrainer.availableTime || !fetchTrainer.availableTime.slots) {
+        return <div><p>Loading...</p></div>;
+    }
 
     return (
         <div className="bg-gray-900 text-white min-h-screen p-6 flex flex-col items-center">

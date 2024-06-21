@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useFetchClassess from "../../Hooks/useFetchClasses";
+import useFetchClasses from "../../Hooks/useFetchClasses";
 import Select from 'react-select'
 import { uploadImage } from "../../Components/Utility/uploadImage";
 import useAuth from "../../Hooks/useAuth";
@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 const BeATrainer = () => {
     // const [classes, setClasses] = useState([])
     const { user, setLoader } = useAuth()
-    const [classes] = useFetchClassess() // isLoading
+    const [classes] = useFetchClasses() // isLoading
     const axiosSecure = useAxiosSecure()
 
 

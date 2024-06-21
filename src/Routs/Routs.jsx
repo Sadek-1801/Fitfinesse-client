@@ -28,6 +28,8 @@ import AdminRouts from "./AdminRouts";
 import AppTrainerDetails from "../Pages/Dashboard/Admin/AppliedTrainer/AppTrainerDetails";
 import Profile from "../Pages/Dashboard/Shared/Profile";
 import TrainerRaout from "./TrainerRaout";
+import ActivityLog from "../Pages/Dashboard/Shared/ActivityLog";
+import MyTrainer from "../Pages/Dashboard/Shared/MyTrainer";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -83,7 +85,6 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        path: "profile",
         element: <Profile />
       },
       {
@@ -121,6 +122,14 @@ export const router = createBrowserRouter([
       {
         path: "addForum",
         element: <AddForum />
+      },
+      {
+        path: "activityLog",
+        element: <ActivityLog />
+      },
+      {
+        path: "myTrainer",
+        element: <MyTrainer />
       },
       {
         path: "addNewSlot",

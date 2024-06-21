@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-const useFetchClassess = () => {
+const useFetchClasses = () => {
     const {data: classes = [], isLoading} = useQuery({
         queryKey: ["fetchClass"], 
         queryFn: async() =>{
@@ -13,4 +13,4 @@ const useFetchClassess = () => {
     return [classes, isLoading]
 }
 
-export default useFetchClassess;
+export default useFetchClasses;

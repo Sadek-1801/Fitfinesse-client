@@ -61,12 +61,25 @@ const AuthProvider = ({ children }) => {
 
 
     useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, currentUser => {
+        const unSubscribe = onAuthStateChanged(auth, async currentUser => {
             setUser(currentUser);
-            if(currentUser){
-                saveUser(currentUser)
+            if (currentUser) {
+                const userEmail = { email: currentUser.email }
+                const { data } = await axios.post(
+                    `${import.meta.env.VITE_SERVER}/jwt`,
+                    { userEmail },
+                    { withCredentials: true }
+                )
+                console.log(data);
+                if (data.token) {
+                    localStorage.setItem('access-token', data.token)
+                    saveUser(currentUser)
+                    setLoader(false)
+                }
+            } else {
+                localStorage.removeItem('access-token');
+                setLoader(false)
             }
-            setLoader(false)
         });
         return () => {
             unSubscribe();

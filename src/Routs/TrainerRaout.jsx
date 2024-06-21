@@ -5,7 +5,7 @@ import useRole from "../Hooks/useRole";
 const TrainerRaout = ({ children }) => {
     const [role, isLoading] = useRole()
     if (isLoading) return <div><p>Loading.......</p></div>
-    if (role === 'admin') return children
+    if (role === 'trainer') return children
     return <Navigate to='/dashboard' />
 };
 TrainerRaout.propTypes = {

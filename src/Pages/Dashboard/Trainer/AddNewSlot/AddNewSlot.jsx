@@ -1,80 +1,80 @@
 import toast from "react-hot-toast";
 import Select from 'react-select';
 import useAuth from "../../../../Hooks/useAuth";
-import useFetchClassess from "../../../../Hooks/useFetchClasses";
+import useFetchClasses from "../../../../Hooks/useFetchClasses";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useQuery } from "@tanstack/react-query";
-import { uploadImage } from "../../../../Components/Utility/uploadImage";
 
 const timeOptions = [
     {
-        "value": "mor-four",
-        "label": "Morning: 7am to 11am",
-        "slots": [
-            { "slotName": "Slot 7-8", "duration": "1 hour", "status": "available" },
-            { "slotName": "Slot 8-9", "duration": "1 hour", "status": "available" },
-            { "slotName": "Slot 9-10", "duration": "1 hour", "status": "available" },
-            { "slotName": "Slot 10-11", "duration": "1 hour", "status": "available" }
+        value: "mor-four",
+        label: "Morning: 7am to 11am",
+        slots: [
+            { slotName: "Slot 7-8", duration: "1 hour", status: "available" },
+            { slotName: "Slot 8-9", duration: "1 hour", status: "available" },
+            { slotName: "Slot 9-10", duration: "1 hour", status: "available" },
+            { slotName: "Slot 10-11", duration: "1 hour", status: "available" }
         ]
     },
     {
-        "value": "mor-six",
-        "label": "Morning: 7am to 1pm",
-        "slots": [
-            { "slotName": "Slot 7-8", "duration": "1 hour", "status": "available" },
-            { "slotName": "Slot 8-9", "duration": "1 hour", "status": "available" },
-            { "slotName": "Slot 9-10", "duration": "1 hour", "status": "available" },
-            { "slotName": "Slot 10-11", "duration": "1 hour", "status": "available" },
-            { "slotName": "Slot 11-12", "duration": "1 hour", "status": "available" },
-            { "slotName": "Slot 12-13", "duration": "1 hour", "status": "available" }
+        value: "mor-six",
+        label: "Morning: 7am to 1pm",
+        slots: [
+            { slotName: "Slot 7-8", duration: "1 hour", status: "available" },
+            { slotName: "Slot 8-9", duration: "1 hour", status: "available" },
+            { slotName: "Slot 9-10", duration: "1 hour", status: "available" },
+            { slotName: "Slot 10-11", duration: "1 hour", status: "available" },
+            { slotName: "Slot 11-12", duration: "1 hour", status: "available" },
+            { slotName: "Slot 12-13", duration: "1 hour", status: "available" }
         ]
     },
     {
-        "value": "eve-four",
-        "label": "Evening: 4pm to 8pm",
-        "slots": [
-            { "slotName": "Slot 16-17", "duration": "1 hour", "status": "available" },
-            { "slotName": "Slot 17-18", "duration": "1 hour", "status": "available" },
-            { "slotName": "Slot 18-19", "duration": "1 hour", "status": "available" },
-            { "slotName": "Slot 19-20", "duration": "1 hour", "status": "available" }
+        value: "eve-four",
+        label: "Evening: 4pm to 8pm",
+        slots: [
+            { slotName: "Slot 16-17", duration: "1 hour", status: "available" },
+            { slotName: "Slot 17-18", duration: "1 hour", status: "available" },
+            { slotName: "Slot 18-19", duration: "1 hour", status: "available" },
+            { slotName: "Slot 19-20", duration: "1 hour", status: "available" }
         ]
     },
     {
-        "value": "eve-six",
-        "label": "Evening: 4pm to 10pm",
-        "slots": [
-            { "slotName": "Slot 16-17", "duration": "1 hour", "status": "available" },
-            { "slotName": "Slot 17-18", "duration": "1 hour", "status": "available" },
-            { "slotName": "Slot 18-19", "duration": "1 hour", "status": "available" },
-            { "slotName": "Slot 19-20", "duration": "1 hour", "status": "available" },
-            { "slotName": "Slot 20-21", "duration": "1 hour", "status": "available" },
-            { "slotName": "Slot 21-22", "duration": "1 hour", "status": "available" }
+        value: "eve-six",
+        label: "Evening: 4pm to 10pm",
+        slots: [
+            { slotName: "Slot 16-17", duration: "1 hour", status: "available" },
+            { slotName: "Slot 17-18", duration: "1 hour", status: "available" },
+            { slotName: "Slot 18-19", duration: "1 hour", status: "available" },
+            { slotName: "Slot 19-20", duration: "1 hour", status: "available" },
+            { slotName: "Slot 20-21", duration: "1 hour", status: "available" },
+            { slotName: "Slot 21-22", duration: "1 hour", status: "available" }
         ]
     }
 ];
 
 const AddNewSlot = () => {
     const { user, setLoader } = useAuth();
-    const [classes] = useFetchClassess();
+    const [classes] = useFetchClasses();
     const axiosSecure = useAxiosSecure();
     const { data: trainerData = {}, isLoading } = useQuery({
         queryKey: ['trainerEmail', user?.email],
         queryFn: async () => {
             const { data } = await axiosSecure(`/trainer-email/${user?.email}`);
             return data;
-        }
+        },
+        enabled: !!user?.email, 
     });
 
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         age: '',
-        profileImage: null,
+        profileImage: "",
         skills: [],
         availableDays: [],
-        availableTime: [],
+        availableTime: {},
         socialLinks: '',
         experience: '',
         bio: ''
@@ -82,18 +82,19 @@ const AddNewSlot = () => {
 
     useEffect(() => {
         if (trainerData) {
-            setFormData({
+            setFormData((prevState) => ({
+                ...prevState,
                 name: trainerData.name || '',
                 email: user?.email || '',
                 age: trainerData.age || '',
-                profileImage: trainerData.profileImage || null,
+                profileImage: trainerData?.profileImage || "",
                 skills: trainerData.skills || [],
                 availableDays: trainerData.availableDays || [],
-                availableTime: trainerData.availableTime || [],
+                availableTime: trainerData.availableTime || {},
                 socialLinks: trainerData.socialLinks || '',
                 experience: trainerData.experience || '',
                 bio: trainerData.bio || ''
-            });
+            }));
         }
     }, [trainerData, user?.email]);
 
@@ -113,11 +114,12 @@ const AddNewSlot = () => {
 
     const handleCheckboxChange = (e) => {
         const { name, checked } = e.target;
-        if (checked) {
-            setFormData({ ...formData, skills: [...formData.skills, name] });
-        } else {
-            setFormData({ ...formData, skills: formData.skills.filter(skill => skill !== name) });
-        }
+        setFormData((prevState) => ({
+            ...prevState,
+            skills: checked
+                ? [...prevState.skills, name]
+                : prevState.skills.filter(skill => skill !== name)
+        }));
     };
 
     const customStyles = {
@@ -157,33 +159,28 @@ const AddNewSlot = () => {
     const handleAvaiTime = (selectedOption) => {
         setFormData({
             ...formData,
-            availableTime: selectedOption.slots.map(slot => ({
-                ...slot,
-                timeOption: selectedOption.value,
-            })),
+            availableTime: selectedOption
         });
     };
 
     const handleSlotChange = (index, field, value) => {
-        const updatedSlots = formData.availableTime.map((slot, slotIndex) => (
-            slotIndex === index ? { ...slot, [field]: value } : slot
-        ));
-        setFormData({
-            ...formData,
-            availableTime: updatedSlots,
-        });
+        setFormData((prevState) => ({
+            ...prevState,
+            availableTime: {
+                ...prevState.availableTime,
+                slots: prevState.availableTime.slots.map((slot, slotIndex) => (
+                    slotIndex === index ? { ...slot, [field]: value } : slot
+                ))
+            }
+        }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(formData);
-        const profileImageURL = await uploadImage(formData.profileImage)
-        const trainerData = {
-            ...formData,
-            profileImage: profileImageURL,
-        }
+
         try {
-            const { data } = await axiosSecure.patch(`/update-trainer/${user?.email}`, trainerData);
+            const { data } = await axiosSecure.patch(`/update-trainer/${user?.email}`, formData);
             if (data.message === "You've successfully updated your profile.") {
                 toast.success(data.message);
             } else {
@@ -213,7 +210,7 @@ const AddNewSlot = () => {
                             type="text"
                             name="name"
                             readOnly
-                            value={formData.name}
+                            value={formData?.name}
                             className="w-full p-2 bg-gray-800 text-white border border-[#E01717] rounded"
                         />
                     </div>
@@ -221,10 +218,9 @@ const AddNewSlot = () => {
                         <label className="block text-white">Email</label>
                         <input
                             readOnly
-                            defaultValue={user?.email}
                             type="email"
                             name="email"
-                            value={formData.email}
+                            value={formData?.email}
                             className="w-full p-2 bg-gray-800 text-white border border-[#E01717] rounded"
                         />
                     </div>
@@ -234,17 +230,17 @@ const AddNewSlot = () => {
                             type="number"
                             name="age"
                             readOnly
-                            value={formData.age}
+                            value={formData?.age}
                             className="w-full p-2 bg-gray-800 text-white border border-[#E01717] rounded"
                         />
                     </div>
                     <div>
                         <label className="block text-white">Profile Image</label>
                         <input
-                            type="file"
+                            type="text"
                             name="profileImage"
-                            required
-                            onChange={(e) => setFormData({ ...formData, profileImage: e.target.files[0] })}
+                            readOnly
+                            value={formData?.profileImage}
                             className="w-full p-2 bg-gray-800 text-white border border-[#E01717] rounded"
                         />
                     </div>
@@ -256,7 +252,7 @@ const AddNewSlot = () => {
                                     <input
                                         type="checkbox"
                                         name={skill}
-                                        checked={formData.skills.includes(skill)}
+                                        checked={formData?.skills.includes(skill)}
                                         onChange={handleCheckboxChange}
                                         className="mr-2"
                                     />
@@ -273,10 +269,9 @@ const AddNewSlot = () => {
                             options={daysOptions}
                             className="basic-multi-select"
                             classNamePrefix="select"
-                            value={formData.availableDays}
+                            value={formData?.availableDays}
                             onChange={handleAvaiDays}
                             styles={customStyles}
-                            required
                         />
                     </div>
                     <div>
@@ -286,12 +281,12 @@ const AddNewSlot = () => {
                             options={timeOptions}
                             className="basic-single"
                             classNamePrefix="select"
+                            value={formData?.availableTime}
                             onChange={handleAvaiTime}
                             styles={customStyles}
-                            required
                         />
                     </div>
-                    {formData.availableTime.length > 0 && formData.availableTime.map((slot, index) => (
+                    {formData?.availableTime?.slots && formData?.availableTime?.slots.map((slot, index) => (
                         <div key={index} className="mb-4 p-4 bg-gray-700 rounded-lg">
                             <div className="mb-2">
                                 <label className="block text-sm font-medium text-gray-300">Slot Name</label>
@@ -306,7 +301,7 @@ const AddNewSlot = () => {
                                 <label className="block text-sm font-medium text-gray-300">Duration</label>
                                 <input
                                     type="text"
-                                    value={slot.duration}
+                                    value={slot?.duration}
                                     onChange={(e) => handleSlotChange(index, 'duration', e.target.value)}
                                     className="w-full p-2 bg-gray-800 text-white border border-[#E01717] rounded"
                                 />
@@ -318,7 +313,7 @@ const AddNewSlot = () => {
                         <input
                             type="text"
                             name="socialLinks"
-                            value={formData.socialLinks}
+                            value={formData?.socialLinks}
                             required
                             onChange={(e) => setFormData({ ...formData, socialLinks: e.target.value })}
                             placeholder="e.g., https://instagram.com/yourprofile"
@@ -330,8 +325,7 @@ const AddNewSlot = () => {
                         <input
                             type="number"
                             name="experience"
-                            required
-                            value={formData.experience}
+                            value={formData?.experience}
                             onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
                             className="w-full p-2 bg-gray-800 text-white border border-[#E01717] rounded"
                         />
@@ -340,8 +334,7 @@ const AddNewSlot = () => {
                         <label className="block text-white">Short Bio</label>
                         <textarea
                             name="bio"
-                            value={formData.bio}
-                            required
+                            value={formData?.bio}
                             onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
                             rows="4"
                             className="w-full p-2 bg-gray-800 text-white border border-[#E01717] rounded"

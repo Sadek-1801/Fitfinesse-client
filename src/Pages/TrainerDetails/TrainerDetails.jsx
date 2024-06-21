@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet-async";
 
 const TrainerDetails = () => {
     const { id } = useParams()
-    const { setTrainer} = useContext(TrainerBookingContext)
+    const { setTrainer } = useContext(TrainerBookingContext)
     const navigate = useNavigate()
     const axiosCommon = useAxiosCommon()
     const { data: trainer, isLoading } = useQuery({
@@ -28,8 +28,8 @@ const TrainerDetails = () => {
         setTrainer(trainerInfo)
         navigate("/trainerBooking")
     }
+    console.log(trainer);
 
-    
     if (isLoading) return <p>Loading..........</p>
     return (
         <div className="container mx-auto p-6 bg-gray-900 text-white">
@@ -37,7 +37,7 @@ const TrainerDetails = () => {
                 <title>FitFinesse | Trainer Details</title>
             </Helmet>
             <div className="text-center">
-            <h2 className="text-4xl font-bold mb-8">All You Need To Know About Mr: {trainer.name}</h2>
+                <h2 className="text-4xl font-bold mb-8">All You Need To Know About Mr: {trainer.name}</h2>
             </div>
             <div className="lg:flex lg:space-x-8">
                 {/* Trainer Info Section */}
@@ -95,7 +95,9 @@ const TrainerDetails = () => {
                         <h3 className="font-semibold text-lg mb-2 text-center ">Available Slots:</h3>
                         <div className="grid grid-cols-2 gap-2">
                             {trainer.availableTime.slots.map((slot, index) => (
-                                <button onClick={() => handleBooking(slot, trainer)} key={index} className="bg-gray-800 text-white py-1 px-2 rounded hover:bg-red-400 transition text-lg">
+                                <button 
+                                // disabled={ } 
+                                onClick={() => handleBooking(slot, trainer)} key={index} className="bg-gray-800 text-white py-1 px-2 rounded hover:bg-red-400 transition text-lg">
                                     {slot.slotName} : ({slot.duration})
                                 </button>
                             ))}

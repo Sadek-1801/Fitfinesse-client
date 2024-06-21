@@ -1,20 +1,20 @@
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Dialog, Transition } from '@headlessui/react';
-import { Fragment } from 'react';
 import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
+import { FaEye } from 'react-icons/fa';
 
 const ActivityLog = () => {
-    const { user } = useAuth();
+    const { user, loader } = useAuth();
     const axiosSecure = useAxiosSecure();
     const [isOpen, setIsOpen] = useState(false);
     const [selectedRejection, setSelectedRejection] = useState('');
 
     const { data: applications = [], isLoading } = useQuery({
-        queryKey: ['applications', user?.email],
+        queryKey: ['applications'],
         queryFn: async () => {
-            const { data } = await axiosSecure(`/applications/${user?.email}`);
+            const { data } = await axiosSecure(`/applications`);
             return data;
         }
     });
@@ -32,26 +32,31 @@ const ActivityLog = () => {
     if (isLoading) return <p>Loading...</p>;
 
     return (
-        <div className="container mx-auto p-6 bg-gray-900 rounded-lg shadow-lg w-full max-w-lg">
+        <div className="container mx-auto p-6 bg-gray-900 rounded-lg shadow-lg w-full max-w-4xl">
             <h2 className="text-white text-3xl font-bold mb-8 text-center">Activity Log</h2>
-            <div className="space-y-4">
-                {applications.map((application) => (
-                    <div key={application.id} className="bg-gray-800 p-4 rounded-lg">
-                        <div className="flex justify-between items-center">
-                            <span className="text-white">{application.name}</span>
-                            <span className={`text-white ${application.status === 'Rejected' ? 'text-red-500' : 'text-yellow-500'}`}>
-                                {application.status}
-                            </span>
-                            {application.status === 'Rejected' && (
-                                <button onClick={() => openModal(application.feedback)}>
-                                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12m-3 0a3 3 0 106 0 3 3 0 00-6 0zm6.828 3.828a4.5 4.5 0 010 6.364M21 21l-4.5-4.5m0 0a4.5 4.5 0 01-6.364 0M3 3l18 18"></path>
-                                    </svg>
-                                </button>
-                            )}
-                        </div>
-                    </div>
-                ))}
+            <div className="overflow-x-auto">
+                <table className="min-w-full bg-gray-800 text-white rounded-lg">
+                    <thead>
+                        <tr>
+                            <th className="py-3 px-6 text-left">Email</th>
+                            <th className="py-3 px-6 text-left">Status</th>
+                            <th className="py-3 px-6 text-left">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {applications.map((application) => (
+                            <tr key={application._id} className="border-b border-gray-700">
+                                <td className="py-3 px-6">{application.email}</td>
+                                <td className="py-3 px-6 text-red-500">{application.status}</td>
+                                <td className="py-3 px-6">
+                                    <button onClick={() => openModal(application.feedback)} className="text-white">
+                                        <FaEye />
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
 
             <Transition appear show={isOpen} as={Fragment}>
@@ -66,7 +71,7 @@ const ActivityLog = () => {
                             leaveFrom="opacity-100"
                             leaveTo="opacity-0"
                         >
-                            <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-50" />
+                            <div className="fixed inset-0 bg-black bg-opacity-50" />
                         </Transition.Child>
 
                         <span className="inline-block h-screen align-middle" aria-hidden="true">&#8203;</span>

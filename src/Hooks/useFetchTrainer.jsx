@@ -10,7 +10,7 @@ const useFetchTrainer = () => {
         enabled: !loader && !!user?.email, 
         queryFn: async() =>{
             // const {data} = await axiosSecure(`/trainer/${user?.email}`)
-            const {data} = await axiosSecure(`/fetchTrainer/mikejohnson@example.com`)
+            const {data} = await axiosSecure(`/fetchTrainer/${user?.email}`)
             return data
         } 
     })
